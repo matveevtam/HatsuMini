@@ -78,49 +78,53 @@
         default_layer {
             label = "DEFAULT";
             bindings = <
-&lt 3 ESC  &kp Q  &kp W    &kp E        &kp R              &kp T        &kp Y      &kp U        &kp I          &kp O         &kp P          &kp BACKSPACE
-&kp TAB    &kp A  &lt 3 S  &kp D        &kp F              &kp G        &kp H      &kp J        &kp K          &lt 3 L       &kp SEMICOLON  &kp SQT
-&kp LSHFT  &kp Z  &kp X    &kp C        &kp V              &kp B        &kp N      &kp M        &lt 3 COMMA    &lt 3 PERIOD  &kp SLASH      &kp RSHFT
-                         &kp LCTRL    &lt 1 SPACE &lt 2 RIGHT_COMMAND &mkp LCLK  &lt 1 ENTER
+                &lt 3 ESC    &kp Q    &kp W      &kp E    &kp R    &kp T            &kp Y    &kp U    &kp I          &kp O           &kp P            &kp BACKSPACE
+                &kp TAB      &kp A    &lt 3 S    &kp D    &kp F    &kp G            &kp H    &kp J    &kp K          &lt 3 L         &kp SEMICOLON    &kp SQT
+                &kp LSHFT    &kp Z    &kp X      &kp C    &kp V    &kp B            &kp N    &kp M    &lt 3 COMMA    &lt 3 PERIOD    &kp SLASH        &kp RSHFT
+
+                             &kp LCTRL    &lt 1 SPACE    &lt 2 RIGHT_COMMAND        &mkp LCLK    &lt 1 ENTER
             >;
         };
 
         number_layer {
             label = "NUMBER";
             bindings = <
-&trans  &kp AT             &kp N7  &kp N8  &kp N9  &kp EQUAL  &kp DOLLAR  &euro           &kp UP_ARROW    &trans           &trans  &trans
-&trans  &kp DOUBLE_QUOTES  &kp N4  &kp N5  &kp N6  &kp PLUS   &email      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans
-&trans  &kp N0             &kp N1  &kp N2  &kp N3  &kp DOT    &email      &trans          &trans          &trans           &trans  &trans
-                                   &trans  &trans  &trans     &trans      &trans
+                &trans    &kp AT               &kp N7    &kp N8    &kp N9    &kp EQUAL            &kp DOLLAR    &euro             &kp UP_ARROW      &trans             &trans    &trans
+                &trans    &kp DOUBLE_QUOTES    &kp N4    &kp N5    &kp N6    &kp PLUS             &email        &kp LEFT_ARROW    &kp DOWN_ARROW    &kp RIGHT_ARROW    &trans    &trans
+                &trans    &kp N0               &kp N1    &kp N2    &kp N3    &kp DOT              &email        &trans            &trans            &trans             &trans    &trans
+
+                                                            &trans    &trans    &trans            &trans      &trans
             >;
         };
 
         fn_layer {
             label = "FN";
             bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &kp F10  &kp F11  &kp F12  &bt BT_CLR    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR
-&sys_reset    &trans        &kp F7   &kp F8   &kp F9   &out OUT_USB  &out OUT_USB  &trans        &trans        &trans        &trans        &sys_reset
-&trans        &trans        &kp F4   &kp F5   &kp F6   &out OUT_BLE  &out OUT_BLE  &trans        &trans        &trans        &trans        &trans
-                                     &kp F1   &kp F2   &kp F3        &trans        &trans
+                &bt BT_SEL 0    &bt BT_SEL 1    &kp F10    &kp F11    &kp F12    &bt BT_CLR              &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &bt BT_CLR
+                &sys_reset      &trans          &kp F7     &kp F8     &kp F9     &out OUT_USB            &out OUT_USB    &trans          &trans          &trans          &trans          &sys_reset
+                &trans          &trans          &kp F4     &kp F5     &kp F6     &out OUT_BLE            &out OUT_BLE    &trans          &trans          &trans          &trans          &trans
+
+                                                                   &kp F1    &kp F2    &kp F3            &trans    &trans
             >;
         };
 
         mouse {
             label = "HOTKEY";
             bindings = <
-&trans  &trans  &trans  &trans     &trans     &kp C_VOLUME_UP &msc SCRL_UP     &trans     &mkp MCLK    &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &kp C_VOLUME_DOWN &msc SCRL_DOWN     &mkp RCLK     &mkp LCLK  &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &kp C_MUTE &trans     &trans     &trans          &trans  &trans  &trans
-                       &mkp RCLK    &mkp LCLK &mkp MCLK  &mkp RCLK  &mkp LCLK
+                &trans    &trans    &trans    &trans    &trans    &kp C_VOLUME_UP              &msc SCRL_UP      &trans       &mkp MCLK    &trans    &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &kp C_VOLUME_DOWN            &msc SCRL_DOWN    &mkp RCLK    &mkp LCLK    &trans    &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &kp C_MUTE                   &trans            &trans       &trans       &trans    &trans    &trans
+
+                                                   &mkp RCLK    &mkp LCLK &mkp MCLK            &mkp RCLK    &mkp LCLK
             >;
         };
 
         navigation {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans          &kp UP_ARROW    &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans           &trans  &trans
-                        &trans  &trans  &trans  &trans  &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &trans            &kp UP_ARROW      &trans             &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp LEFT_ARROW    &kp DOWN_ARROW    &kp RIGHT_ARROW    &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &trans            &trans            &trans             &trans    &trans
+                                              &trans    &trans    &trans            &trans    &trans
             >;
         };
     };
