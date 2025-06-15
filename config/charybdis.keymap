@@ -11,6 +11,7 @@
 #define LAYER_HOTKEY  4
 #define LAYER_MOUSE   5
 #define LAYER_SNIPE   6
+#define LAYER_SCROLL  7
 
 #define ALL_LAYERS \
     < \
@@ -21,6 +22,7 @@
         LAYER_HOTKEY \
         LAYER_MOUSE \
         LAYER_SNIPE \
+        LAYER_SCROLL \
     >
 
 
@@ -79,7 +81,6 @@ key positions:
             key-positions = <36 40>;
             bindings = <&macro_switch_language>;
         };
-
         combo_turn_off_qwerty_layer {
             key-positions = <36 39 40>;
             bindings = <&tog_off LAYER_QWERTY>;
@@ -147,9 +148,9 @@ key positions:
         layer_mouse {
             label = "Mouse";
             bindings = <
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &trans       &trans       &trans       &trans             &trans
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &mkp LCLK    &mkp MCLK    &mkp RCLK    &trans             &trans
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &mkp MB4     &trans       &mkp MB5     &mo LAYER_SNIPE    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &trans       &trans              &trans       &trans             &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &mkp LCLK    &mkp MCLK           &mkp RCLK    &trans             &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &mkp MB4     &mo LAYER_SCROLL    &mkp MB5     &mo LAYER_SNIPE    &trans
 
                                               &trans    &trans    &trans            &trans    &trans
             >;
@@ -157,6 +158,17 @@ key positions:
         
         layer_snipe {
             label = "Snipe";
+            bindings = <
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &trans    &trans    &trans    &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &trans    &trans    &trans    &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &trans    &trans    &trans    &trans    &trans
+                                                                    
+                                              &trans    &trans    &trans            &trans    &trans
+            >;
+        };
+        
+        layer_scroll {
+            label = "Scroll";
             bindings = <
                 &trans    &trans    &trans    &trans    &trans    &trans            &trans    &trans    &trans    &trans    &trans    &trans
                 &trans    &trans    &trans    &trans    &trans    &trans            &trans    &trans    &trans    &trans    &trans    &trans
