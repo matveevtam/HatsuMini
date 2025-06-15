@@ -6,6 +6,15 @@
 
 #include "charybdis.dtsi"
 
+#define LAYER_DVORAK  0
+#define LAYER_QWERTY  1
+#define LAYER_NUMBER  2
+#define LAYER_FN      3
+#define LAYER_HOTKEY  4
+#define LAYER_MOUSE   5
+#define LAYER_SNIPE   6
+
+
 &default_transform {
     col-offset = <6>;
 };
@@ -25,17 +34,21 @@
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 8)>,
-                <NRF_PSEL(SPIM_MOSI, 0, 17)>,
-                <NRF_PSEL(SPIM_MISO, 0, 17)>;
+            psels
+                = <NRF_PSEL(SPIM_SCK,  0, 8 )>
+                , <NRF_PSEL(SPIM_MOSI, 0, 17)>
+                , <NRF_PSEL(SPIM_MISO, 0, 17)>
+                ;
         };
     };
 
     spi0_sleep: spi0_sleep {
         group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 8)>,
-                <NRF_PSEL(SPIM_MOSI, 0, 17)>,
-                <NRF_PSEL(SPIM_MISO, 0, 17)>;
+            psels 
+                = <NRF_PSEL(SPIM_SCK,  0, 8 )>
+                , <NRF_PSEL(SPIM_MOSI, 0, 17)>
+                , <NRF_PSEL(SPIM_MISO, 0, 17)>
+                ;
             low-power-enable;
         };
     };
@@ -55,9 +68,10 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        scroll-layers = <1>;
-        // snipe-layers = <>;
-        automouse-layer = <5>;
+        scroll-layers = <LAYER_MOUSE>;
+        // snipe-layers = <LAYER_SNIPE>;  
+        // automouse-layer = <LAYER_MOUSE>;
+        // automouse-layer-timeout-ms = <600>;
     };
 };
 
