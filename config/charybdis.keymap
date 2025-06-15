@@ -81,9 +81,15 @@ key positions:
             key-positions = <36 40>;
             bindings = <&macro_switch_language>;
         };
+
         combo_turn_off_qwerty_layer {
             key-positions = <36 39 40>;
             bindings = <&tog_off LAYER_QWERTY>;
+        };
+
+        combo_reset_to_dvorak_layer {
+            key-positions = <0 1>;
+            bindings = <&to LAYER_DVORAK>;
         };
     };
 
