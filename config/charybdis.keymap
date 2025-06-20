@@ -7,32 +7,13 @@
 #define LAYER_DVORAK  0
 #define LAYER_QWERTY  1
 #define LAYER_NUMBER  2
-#define LAYER_FN      3
-#define LAYER_HOTKEY  4
-#define LAYER_MOUSE   5
-#define LAYER_SNIPE   6
-#define LAYER_SCROLL  7
+#define LAYER_NAV     3
+#define LAYER_FN      4
+#define LAYER_HOTKEY  5
+#define LAYER_MOUSE   6
+#define LAYER_SNIPE   7
+#define LAYER_SCROLL  8
 
-#define ALL_LAYERS \
-    < \
-        LAYER_DVORAK \
-        LAYER_QWERTY \
-        LAYER_NUMBER \
-        LAYER_FN \
-        LAYER_HOTKEY \
-        LAYER_MOUSE \
-        LAYER_SNIPE \
-        LAYER_SCROLL \
-    >
-
-
-/*
-key positions:
-0  1  2  3  4  5     6  7  8  9  10 11
-12 13 14 15 16 17    18 19 20 21 22 23
-24 25 26 27 28 29    30 31 32 33 34 35
-         36 37 38    39 40
-*/
 
 / {
     behaviors {
@@ -69,28 +50,95 @@ key positions:
 
     };
 
+    /*
+        key positions:
+        0  1  2  3  4  5     6  7  8  9  10 11
+        12 13 14 15 16 17    18 19 20 21 22 23
+        24 25 26 27 28 29    30 31 32 33 34 35
+                 36 37 38    39 40
+    */
+
     combos {
         compatible = "zmk,combos";
 
-        combo_toggle_mouse_layer {
-            key-positions = <39 40>;
-            bindings = <&tog LAYER_MOUSE>;
+        combo_esc {
+            key-positions = <0 1>;
+            bindings = <&kp ESC>;
         };
 
-        combo_switch_language {
-            key-positions = <36 40>;
-            bindings = <&macro_switch_language>;
-        };
-
-        combo_turn_off_qwerty_layer {
-            key-positions = <36 39 40>;
-            bindings = <&tog_off LAYER_QWERTY>;
-        };
 
         combo_reset_to_dvorak_layer {
-            key-positions = <0 1>;
+            key-positions = <0 12>;
             bindings = <&to LAYER_DVORAK>;
         };
+
+
+        combo_toggle_nav_layer {
+            key-positions = <17 36>;
+            bindings = <&tog LAYER_NAV>;
+        };
+        combo_toggle_mouse_layer {
+            key-positions = <16 36>;
+            bindings = <&tog LAYER_MOUSE>;
+        };
+        combo_switch_language {
+            key-positions = <15 36>;
+            bindings = <&macro_switch_language>;
+        };
+        combo_toggle_number_layer {
+            key-positions = <14 36>;
+            bindings = <&tog LAYER_NUMBER>;
+        };
+        combo_toggle_fn_layer {
+            key-positions = <13 36>;
+            bindings = <&tog LAYER_FN>;
+        };
+
+
+        combo_rclk {
+            key-positions = <39 40>;
+            bindings = <&mkp RCLK>;
+        };
+
+        // row 1
+        combo_slash {
+            key-positions = <7 8>;
+            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            bindings = <&kp SLASH>;
+        };
+        combo_backslash {
+            key-positions = <8 9>;
+            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            bindings = <&kp BACKSLASH>;
+        };
+        combo_minus {
+            key-positions = <7 8 9>;
+            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            bindings = <&kp MINUS>;
+        };
+        // row 2
+        combo_paren_left {
+            key-positions = <19 20>;
+            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            bindings = <&kp LPAR>;
+        };
+        combo_paren_right {
+            key-positions = <20 21>;
+            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            bindings = <&kp RPAR>;
+        };
+        // row 3
+        combo_bracket_left {
+            key-positions = <31 32>;
+            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            bindings = <&kp LEFT_BRACKET>;
+        };
+        combo_bracket_right {
+            key-positions = <32 33>;
+            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            bindings = <&kp RIGHT_BRACKET>;
+        };
+        
     };
 
     keymap {
@@ -99,44 +147,56 @@ key positions:
         layer_dvorak {
             label = "Dvorak";
             bindings = <
-                &kp ESC      &kp SEMICOLON    &kp COMMA      &kp DOT    &kp P    &kp Y            &kp F    &kp G    &kp C    &kp R    &kp L    &kp BACKSPACE
-                &kp TAB      &kp A            &kp O          &kp E      &kp U    &kp I            &kp D    &kp H    &kp T    &kp N    &kp S    &kp ENTER
-                &kp LSHFT    &kp APOSTROPHE   &kp Q          &kp J      &kp K    &kp X            &kp B    &kp M    &kp W    &kp V    &kp Z    &kp DELETE
+                &kp GRAVE    &kp SEMI    &kp COMMA             &kp DOT    &kp P                &kp Y                      &kp F    &kp G    &kp C                 &kp R    &kp L    &kp BACKSPACE
+                &kp TAB      &kp A       &lt LAYER_NUMBER O    &kp E      &lt LAYER_MOUSE U    &lt LAYER_NAV I            &kp D    &kp H    &lt LAYER_SCROLL T    &kp N    &kp S    &kp ENTER
+                &kp LSHFT    &kp APOS    &kp Q                 &kp J      &kp K                &kp X                      &kp B    &kp M    &kp W                 &kp V    &kp Z    &kp DELETE
 
-                                                   &kp SPACE    &kp LCTRL    &kp LMETA            &mkp LCLK    &kp LALT
+                                                                 &kp SPACE    &kp LCTRL    &kp LMETA                      &mkp LCLK    &kp LALT
             >;
         };
 
         layer_qwerty {
             label = "Qwerty";
             bindings = <
-                &trans    &kp Q    &kp W    &kp E    &kp R    &kp T            &kp Y    &kp U    &kp I          &kp O      &kp P            &trans
-                &trans    &kp A    &kp S    &kp D    &kp F    &kp G            &kp H    &kp J    &kp K          &kp L      &kp SEMICOLON    &trans
-                &trans    &kp Z    &kp X    &kp C    &kp V    &kp B            &kp N    &kp M    &kp COMMA      &kp DOT    &kp SLASH        &trans
+                &trans    &kp Q    &kp W                 &kp E    &kp R                &kp T                      &kp Y    &kp U    &kp I          &kp O                   &kp P            &trans
+                &trans    &kp A    &lt LAYER_NUMBER S    &kp D    &lt LAYER_MOUSE F    &lt LAYER_NAV G            &kp H    &kp J    &kp K          &lt LAYER_SCROLL L      &kp SEMICOLON    &trans
+                &trans    &kp Z    &kp X                 &kp C    &kp V                &kp B                      &kp N    &kp M    &kp COMMA      &kp DOT                 &kp SLASH        &trans
 
-                                         &trans    &trans    &trans            &trans    &trans
+                                                                  &trans    &trans    &trans                      &trans             &trans
             >;
         };
+
 
         layer_number {
             label = "Number";
             bindings = <
-                &trans    &kp AT               &kp N7    &kp N8    &kp N9    &kp EQUAL            &kp DOLLAR      &trans            &kp UP_ARROW      &trans             &trans    &trans
-                &trans    &kp DOUBLE_QUOTES    &kp N4    &kp N5    &kp N6    &kp PLUS             &macro_email    &kp LEFT_ARROW    &kp DOWN_ARROW    &kp RIGHT_ARROW    &trans    &trans
-                &trans    &kp N0               &kp N1    &kp N2    &kp N3    &kp DOT              &macro_email    &trans            &trans            &trans             &trans    &trans
+                &trans    &kp MINUS    &kp N7    &kp N8    &kp N9                &kp SLASH            &trans    &kp AMPS    &kp ASTRK    &kp EQUAL    &trans    &trans
+                &trans    &kp PLUS     &kp N4    &kp N5    &lt LAYER_MOUSE N6    &kp ASTRK            &trans    &kp DLLR    &kp PRCNT    &kp CARET    &trans    &trans
+                &trans    &kp N0       &kp N1    &kp N2    &kp N3                &kp DOT              &trans    &kp EXCL    &kp AT       &kp HASH     &trans    &trans
 
-                                                            &trans    &trans    &trans            &trans      &trans
+                                                                &trans    &trans    &trans            &trans      &trans
+            >;
+        };
+
+        layer_nav {
+            label = "Navigation";
+            bindings = <
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp HOME    &trans      &kp PG_UP    &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp END     &kp UP      &kp PG_DN    &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp LEFT    &kp DOWN    &kp RIGHT    &trans    &trans
+
+                                              &trans    &trans    &trans            &trans        &trans
             >;
         };
 
         layer_fn {
             label = "FN";
             bindings = <
-                &bt BT_SEL 0    &bt BT_SEL 1    &kp F10    &kp F11    &kp F12    &bt BT_CLR              &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &bt BT_CLR
-                &sys_reset      &trans          &kp F7     &kp F8     &kp F9     &out OUT_USB            &out OUT_USB    &trans          &trans          &trans          &trans          &sys_reset
-                &trans          &trans          &kp F4     &kp F5     &kp F6     &out OUT_BLE            &out OUT_BLE    &trans          &trans          &trans          &trans          &trans
+                &bt BT_SEL 0    &kp F9    &kp F10    &kp F11    &kp F12    &trans            &trans    &trans    &trans    &trans    &trans    &trans
+                &sys_reset      &kp F5    &kp F6     &kp F7     &kp F8     &trans            &trans    &trans    &trans    &trans    &trans    &sys_reset
+                &trans          &kp F1    &kp F2     &kp F3     &kp F4     &trans            &trans    &trans    &trans    &trans    &trans    &trans
 
-                                                                   &kp F1    &kp F2    &kp F3            &trans    &trans
+                                                       &kp F1    &kp F2    &kp F3            &trans    &trans
             >;
         };
         
