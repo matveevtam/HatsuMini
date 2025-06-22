@@ -139,16 +139,51 @@
             bindings = <&kp RIGHT_BRACKET>;
         };
 
-        // missing cyrillic letters
-        combo_hard_sign {
+        // CYRILLIC: missing characters and specials
+        combo_cyrillic_question_mark {
+            key-positions = <7 8>;
+            layers = <LAYER_QWERTY>;
+            bindings = <&kp LS(N7)>;
+        };
+        combo_cyrillic_h {
+            key-positions = <8 9>;
+            layers = <LAYER_QWERTY>;
+            bindings = <&kp LEFT_BRACKET>;
+        };
+        combo_cyrillic_hard_sign {
             key-positions = <9 10>;
             layers = <LAYER_QWERTY>;
             bindings = <&kp RIGHT_BRACKET>;
+        };
+        combo_cyrillic_minus {
+            key-positions = <7 8 9>;
+            layers = <LAYER_QWERTY>;
+            bindings = <&kp MINUS>;
+        };
+        combo_cyrillic_paren_left {
+            key-positions = <19 20>;
+            layers = <LAYER_QWERTY>;
+            bindings = <&kp LPAR>;
+        };
+        combo_cyrillic_paren_right {
+            key-positions = <20 21>;
+            layers = <LAYER_QWERTY>;
+            bindings = <&kp RPAR>;
         };
         combo_cyrillic_e {
             key-positions = <21 22>;
             layers = <LAYER_QWERTY>;
             bindings = <&kp APOS>;
+        };
+        combo_cyrillic_semicolon {
+            key-positions = <32 33>;
+            layers = <LAYER_QWERTY>;
+            bindings = <&kp LS(N4)>;
+        };
+        combo_cyrillic_colon {
+            key-positions = <33 34>;
+            layers = <LAYER_QWERTY>;
+            bindings = <&kp LS(N6)>;
         };
         
     };
@@ -170,9 +205,9 @@
         layer_qwerty {
             label = "Qwerty";
             bindings = <
-                &trans    &kp Q    &kp W                 &kp E    &kp R                &kp T                      &kp Y    &kp U    &kp I                 &kp O      &kp P            &trans
-                &trans    &kp A    &lt LAYER_NUMBER S    &kp D    &lt LAYER_MOUSE F    &lt LAYER_NAV G            &kp H    &kp J    &lt LAYER_SCROLL K    &kp L      &kp SEMICOLON    &trans
-                &trans    &kp Z    &kp X                 &kp C    &kp V                &kp B                      &kp N    &kp M    &kp COMMA             &kp DOT    &kp SLASH        &trans
+                &kp GRAVE    &kp Q    &kp W                 &kp E    &kp R                &kp T                      &kp Y    &kp U    &kp I                 &kp O      &kp P            &trans
+                &trans       &kp A    &lt LAYER_NUMBER S    &kp D    &lt LAYER_MOUSE F    &lt LAYER_NAV G            &kp H    &kp J    &lt LAYER_SCROLL K    &kp L      &kp SEMICOLON    &trans
+                &trans       &kp Z    &kp X                 &kp C    &kp V                &kp B                      &kp N    &kp M    &kp COMMA             &kp DOT    &kp SLASH        &trans
 
                                                                   &trans    &trans    &trans                      &trans             &trans
             >;
