@@ -248,9 +248,9 @@
         layer_number {
             label = "Number";
             bindings = <
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans      &kp N7    &kp N8        &kp N9    &kp SLASH    &trans
-                &trans    &trans    &trans    &trans    &trans    &trans            &kp PLUS    &kp N4    LT_SCR N5     &kp N6    &kp ASTRK    &trans
-                &trans    &trans    &trans    &trans    &trans    &trans            &kp N0      &kp N1    &kp N2        &kp N3    &kp DOT      &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &kp MINUS    &kp N7    &kp N8        &kp N9    &kp SLASH    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &kp PLUS     &kp N4    LT_SCR N5     &kp N6    &kp ASTRK    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &kp N0       &kp N1    &kp N2        &kp N3    &kp DOT      &trans
 
                                               &trans    &trans    &trans            &trans      &trans
             >;
