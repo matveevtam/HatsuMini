@@ -6,13 +6,21 @@
 
 #define LAYER_DVORAK  0
 #define LAYER_QWERTY  1
-#define LAYER_NUMBER  2
-#define LAYER_NAV     3
-#define LAYER_FN      4
-#define LAYER_HOTKEY  5
-#define LAYER_MOUSE   6
-#define LAYER_SNIPE   7
-#define LAYER_SCROLL  8
+#define LAYER_SPEC    2
+#define LAYER_NUMBER  3
+#define LAYER_NAV     4
+#define LAYER_FN      5
+#define LAYER_HOTKEY  6
+#define LAYER_MOUSE   7
+#define LAYER_SNIPE   8
+#define LAYER_SCROLL  9
+
+#define LT_SPC  &lt LAYER_SPEC
+#define LT_NUM  &lt LAYER_NUMBER
+#define LT_NAV  &lt LAYER_NAV
+#define LT_FN   &lt LAYER_FN
+#define LT_MOU  &lt LAYER_MOUSE
+#define LT_SCR  &lt LAYER_SCROLL
 
 
 / {
@@ -89,6 +97,10 @@
             key-positions = <14 36>;
             bindings = <&tog LAYER_NUMBER>;
         };
+        combo_toggle_special_layer {
+            key-positions = <26 36>;
+            bindings = <&tog LAYER_SPEC>;
+        };
         combo_toggle_fn_layer {
             key-positions = <13 36>;
             bindings = <&tog LAYER_FN>;
@@ -103,40 +115,47 @@
         // row 1
         combo_slash {
             key-positions = <7 8>;
-            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            layers = <LAYER_DVORAK LAYER_SPEC>;
             bindings = <&kp SLASH>;
         };
         combo_backslash {
             key-positions = <8 9>;
-            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            layers = <LAYER_DVORAK LAYER_SPEC>;
             bindings = <&kp BACKSLASH>;
         };
         combo_minus {
             key-positions = <7 8 9>;
-            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            layers = <LAYER_DVORAK LAYER_SPEC>;
             bindings = <&kp MINUS>;
         };
         // row 2
         combo_paren_left {
             key-positions = <19 20>;
-            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            layers = <LAYER_DVORAK LAYER_SPEC LAYER_NUMBER>;
             bindings = <&kp LPAR>;
         };
         combo_paren_right {
             key-positions = <20 21>;
-            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            layers = <LAYER_DVORAK LAYER_SPEC LAYER_NUMBER>;
             bindings = <&kp RPAR>;
         };
         // row 3
         combo_bracket_left {
             key-positions = <31 32>;
-            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            layers = <LAYER_DVORAK LAYER_SPEC LAYER_NUMBER>;
             bindings = <&kp LEFT_BRACKET>;
         };
         combo_bracket_right {
             key-positions = <32 33>;
-            layers = <LAYER_DVORAK LAYER_NUMBER>;
+            layers = <LAYER_DVORAK LAYER_SPEC LAYER_NUMBER>;
             bindings = <&kp RIGHT_BRACKET>;
+        };
+
+        // NUMBER: add =+ key
+        combo_number_equal {
+            key-positions = <7 8>;
+            layers = <LAYER_NUMBER>;
+            bindings = <&kp EQUAL>;
         };
 
         // CYRILLIC: missing characters and specials
@@ -194,22 +213,34 @@
         layer_dvorak {
             label = "Dvorak";
             bindings = <
-                &kp GRAVE    &kp SEMI          &kp COMMA             &kp DOT    &kp P                &kp Y                      &kp F    &kp G    &kp C                 &kp R    &kp L    &kp BACKSPACE
-                &kp TAB      &lt LAYER_FN A    &lt LAYER_NUMBER O    &kp E      &lt LAYER_MOUSE U    &lt LAYER_NAV I            &kp D    &kp H    &lt LAYER_SCROLL T    &kp N    &kp S    &kp ENTER
-                &kp LSHFT    &kp APOS          &kp Q                 &kp J      &kp K                &kp X                      &kp B    &kp M    &kp W                 &kp V    &kp Z    &kp DELETE
+                &kp GRAVE    &kp SEMI   &kp COMMA    &kp DOT    &kp P       &kp Y               &kp F    &kp G    &kp C       &kp R    &kp L    &kp BACKSPACE
+                &kp TAB      LT_FN A    LT_NUM O     &kp E      LT_MOU U    LT_NAV I            &kp D    &kp H    LT_SCR T    &kp N    &kp S    &kp ENTER
+                &kp LSHFT    &kp APOS   LT_SPC Q     &kp J      &kp K       &kp X               &kp B    &kp M    &kp W       &kp V    &kp Z    &kp DELETE
 
-                                                                       &kp SPACE    &kp LCTRL    &kp LMETA                      &mkp LCLK    &kp LALT
+                                                 &kp SPACE    &kp LCTRL    &kp LMETA           &mkp LCLK    &kp LALT
             >;
         };
 
         layer_qwerty {
             label = "Qwerty";
             bindings = <
-                &kp GRAVE    &kp Q    &kp W                 &kp E    &kp R                &kp T                      &kp Y    &kp U    &kp I                 &kp O      &kp P            &trans
-                &trans       &kp A    &lt LAYER_NUMBER S    &kp D    &lt LAYER_MOUSE F    &lt LAYER_NAV G            &kp H    &kp J    &lt LAYER_SCROLL K    &kp L      &kp SEMICOLON    &trans
-                &trans       &kp Z    &kp X                 &kp C    &kp V                &kp B                      &kp N    &kp M    &kp COMMA             &kp DOT    &kp SLASH        &trans
+                &kp GRAVE    &kp Q      &kp W        &kp E    &kp R       &kp T               &kp Y    &kp U    &kp I       &kp O      &kp P            &trans
+                &trans       LT_FN A    LT_NUM S     &kp D    LT_MOU F    LT_NAV G            &kp H    &kp J    LT_SCR K    &kp L      &kp SEMICOLON    &trans
+                &trans       &kp Z      LT_SPC X     &kp C    &kp V       &kp B               &kp N    &kp M    &kp COMMA   &kp DOT    &kp SLASH        &trans
 
-                                                                  &trans    &trans    &trans                      &trans             &trans
+                                                     &trans    &trans    &trans              &trans             &trans
+            >;
+        };
+
+
+        layer_special {
+            label = "Special";
+            bindings = <
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp AMPS    &kp ASTRK        &kp EQUAL    &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp DLLR    LT_SCR PRCNT     &kp CARET    &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp EXCL    &kp AT           &kp HASH     &trans    &trans
+
+                                              &trans    &trans    &trans            &trans    &trans
             >;
         };
 
@@ -217,11 +248,11 @@
         layer_number {
             label = "Number";
             bindings = <
-                &kp EQUAL    &kp MINUS             &kp N7    &kp N8    &kp N9                &kp SLASH                      &trans    &kp AMPS    &kp ASTRK                 &kp EQUAL    &trans    &trans
-                &trans       &lt LAYER_FN PLUS     &kp N4    &kp N5    &lt LAYER_MOUSE N6    &lt LAYER_NAV ASTRK            &trans    &kp DLLR    &lt LAYER_SCROLL PRCNT    &kp CARET    &trans    &trans
-                &trans       &kp N0                &kp N1    &kp N2    &kp N3                &kp DOT                        &trans    &kp EXCL    &kp AT                    &kp HASH     &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans      &kp N7    &kp N8        &kp N9    &kp SLASH    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &kp PLUS    &kp N4    LT_SCR N5     &kp N6    &kp ASTRK    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &kp N0      &kp N1    &kp N2        &kp N3    &kp DOT      &trans
 
-                                                                                   &trans    &trans    &trans            &trans      &trans
+                                              &trans    &trans    &trans            &trans      &trans
             >;
         };
 

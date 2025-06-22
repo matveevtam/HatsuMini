@@ -8,13 +8,14 @@
 
 #define LAYER_DVORAK  0
 #define LAYER_QWERTY  1
-#define LAYER_NUMBER  2
-#define LAYER_NAV     3
-#define LAYER_FN      4
-#define LAYER_HOTKEY  5
-#define LAYER_MOUSE   6
-#define LAYER_SNIPE   7
-#define LAYER_SCROLL  8
+#define LAYER_SPEC    2
+#define LAYER_NUMBER  3
+#define LAYER_NAV     4
+#define LAYER_FN      5
+#define LAYER_HOTKEY  6
+#define LAYER_MOUSE   7
+#define LAYER_SNIPE   8
+#define LAYER_SCROLL  9
 
 
 &default_transform {
