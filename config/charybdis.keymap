@@ -36,6 +36,9 @@
 #define LT_SCR  &lt LAYER_SCROLL
 
 
+#define LANG_TOGGLE LA(SPACE)
+
+
 / {
     behaviors {
         tog_on: toggle_layer_on_only {
@@ -60,29 +63,46 @@
             bindings = <&mo>, <&mkp>;
             display-name = "Layer-Mouse-Tap";
         };
+
+        llt: layer_language_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&macro_switch_language_hold>, <&mkp>;
+            display-name = "Layer-Language-Tap";
+        };
     };
 
     macros {
 
-        macro_email: macro_email {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp K &kp V &kp M &kp A &kp T &kp V &kp E &kp E &kp V &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
-            label = "Email Macro";
-        };
-
         macro_switch_language_legacy: macro_switch_language_legacy {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&tog LAYER_QWERTY &kp LA(SPACE)>;
+            bindings = <&tog LAYER_QWERTY &kp LANG_TOGGLE>;
             label = "Switch Language Macro";
         };
 
         macro_switch_language: macro_switch_language {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1>, <&to MACRO_PLACEHOLDER>, <&kp LA(SPACE)>;
+            bindings = <&macro_param_1to1>, <&to MACRO_PLACEHOLDER>, <&kp LANG_TOGGLE>;
             label = "Switch Language Macro";
+        };
+
+        macro_switch_language_hold: macro_switch_language_hold {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings 
+                = <&kp LANG_TOGGLE>
+                , <&macro_param_1to1>
+                , <&macro_press &mo MACRO_PLACEHOLDER>
+                , <&macro_pause_for_release>
+                , <&macro_param_1to1>
+                , <&macro_release &mo MACRO_PLACEHOLDER>
+                , <&kp LANG_TOGGLE>
+                ;
+            label = "Switch Language Hold Macro";
         };
 
     };
@@ -136,7 +156,7 @@
         };
 
         
-        combo_enter_cyrillic_layer {
+        combo_cyrillic_enter {
             key-positions = <31 40>;
             layers = <LAYER_DVORAK
                       LAYER_SPEC
@@ -148,7 +168,7 @@
                      >;
             bindings = <&macro_switch_language LAYER_QWERTY>;
         };
-        combo_escape_cyrillic_layer_to_dvorak {
+        combo_cyrillic_escape_to_dvorak {
             key-positions = <19 40>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_DVORAK>;
@@ -272,11 +292,11 @@
         layer_qwerty {
             label = "Qwerty";
             bindings = <
-                &kp GRAVE    &kp Q      &kp W        &kp E    &kp R       &kp T               &kp Y    &kp U    &kp I       &kp O      &kp P            &trans
-                &trans       LT_FN A    LT_NUM S     &kp D    LT_MOU F    LT_NAV G            &kp H    &kp J    LT_SCR K    &kp L      &kp SEMICOLON    &trans
-                &trans       &kp Z      LT_SPC X     &kp C    &kp V       &kp B               &kp N    &kp M    &kp COMMA   &kp DOT    &kp SLASH        &trans
+                &kp GRAVE    &kp Q      &kp W             &kp E    &kp R       &kp T               &kp Y    &kp U    &kp I       &kp O      &kp P            &trans
+                &trans       LT_FN A    &llt LR_NUM S     &kp D    LT_MOU F    LT_NAV G            &kp H    &kp J    LT_SCR K    &kp L      &kp SEMICOLON    &trans
+                &trans       &kp Z      &llt LR_SPC X     &kp C    &kp V       &kp B               &kp N    &kp M    &kp COMMA   &kp DOT    &kp SLASH        &trans
 
-                                                     &trans    &trans    &trans              &trans             &trans
+                                                          &trans    &trans    &trans              &trans             &trans
             >;
         };
 
