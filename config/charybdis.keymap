@@ -39,6 +39,9 @@
 #define LANG_TOGGLE LA(SPACE)
 
 
+#define LNGTST &macro_switch_language_hold_v2
+
+
 / {
     behaviors {
         tog_on: toggle_layer_on_only {
@@ -72,6 +75,15 @@
             bindings = <&macro_switch_language_hold>, <&kp>;
             display-name = "Layer-Language-Tap";
         };
+
+        llt2: layer_language_tap_v2 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&macro_switch_language_hold_v2>, <&kp>;
+            display-name = "Layer-Language-Tap v2";
+        };
     };
 
     macros {
@@ -101,6 +113,21 @@
                 , <&macro_param_1to1>
                 , <&macro_release &mo MACRO_PLACEHOLDER>
                 , <&kp LANG_TOGGLE>
+                ;
+            label = "Switch Language Hold Macro";
+        };
+
+        macro_switch_language_hold_v2: macro_switch_language_hold_v2 {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings 
+                = <&macro_tap &kp LANG_TOGGLE>
+                , <&macro_param_1to1>
+                , <&macro_press &mo MACRO_PLACEHOLDER>
+                , <&macro_pause_for_release>
+                , <&macro_param_1to1>
+                , <&macro_release &mo MACRO_PLACEHOLDER>
+                , <&macro_tap &kp LANG_TOGGLE>
                 ;
             label = "Switch Language Hold Macro";
         };
@@ -292,9 +319,9 @@
         layer_qwerty {
             label = "Qwerty";
             bindings = <
-                &kp GRAVE    &kp Q      &kp W             &kp E    &kp R       &kp T               &kp Y    &kp U    &kp I       &kp O      &kp P            &trans
-                &trans       LT_FN A    &llt LR_NUM S     &kp D    LT_MOU F    LT_NAV G            &kp H    &kp J    LT_SCR K    &kp L      &kp SEMICOLON    &trans
-                &trans       &kp Z      &llt LR_SPC X     &kp C    &kp V       &kp B               &kp N    &kp M    &kp COMMA   &kp DOT    &kp SLASH        &trans
+                &kp GRAVE    &kp LNGTST LR_SPC      &kp W              &kp E    &kp R       &kp T               &kp Y    &kp U    &kp I       &kp O      &kp P            &trans
+                &trans       LT_FN A                &llt2 LR_NUM S     &kp D    LT_MOU F    LT_NAV G            &kp H    &kp J    LT_SCR K    &kp L      &kp SEMICOLON    &trans
+                &trans       &kp Z                  &llt2 LR_SPC X     &kp C    &kp V       &kp B               &kp N    &kp M    &kp COMMA   &kp DOT    &kp SLASH        &trans
 
                                                           &trans    &trans    &trans              &trans             &trans
             >;
