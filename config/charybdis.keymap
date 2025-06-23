@@ -15,6 +15,19 @@
 #define LAYER_SNIPE   8
 #define LAYER_SCROLL  9
 
+
+#define LR_DVO LAYER_DVORAK
+#define LR_QWE LAYER_QWERTY
+#define LR_SPC LAYER_SPEC
+#define LR_NUM LAYER_NUMBER
+#define LR_NAV LAYER_NAV
+#define LR_FN LAYER_FN
+#define LR_HOT LAYER_HOTKEY
+#define LR_MOU LAYER_MOUSE
+#define LR_SNP LAYER_SNIPE
+#define LR_SCR LAYER_SCROLL
+
+
 #define LT_SPC  &lt LAYER_SPEC
 #define LT_NUM  &lt LAYER_NUMBER
 #define LT_NAV  &lt LAYER_NAV
@@ -37,6 +50,15 @@
             #binding-cells = <1>;
             display-name = "Toggle Layer Off";
             toggle-mode = "off";
+        };
+
+        lmt: layer_mouse_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&mkp>;
+            display-name = "Layer-Mouse-Tap";
         };
     };
 
@@ -293,8 +315,8 @@
             label = "Mouse";
             bindings = <
                 &trans    &trans    &trans    &trans    &trans    &trans            &trans    &trans       &trans              &trans       &trans             &trans
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &mkp LCLK    &mo LAYER_SCROLL    &mkp RCLK    &trans             &trans
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &mkp MB4     &mkp MCLK           &mkp MB5     &mo LAYER_SNIPE    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &mkp LCLK    &lmt LR_SCR MCLK    &mkp RCLK    &trans             &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &mkp MB4     &trans              &mkp MB5     &mo LAYER_SNIPE    &trans
 
                                               &trans    &trans    &trans            &trans    &trans
             >;
