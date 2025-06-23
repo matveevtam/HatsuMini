@@ -69,7 +69,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&macro_switch_language_hold>, <&mkp>;
+            bindings = <&macro_switch_language_hold>, <&kp>;
             display-name = "Layer-Language-Tap";
         };
     };
