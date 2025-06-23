@@ -71,10 +71,17 @@
             label = "Email Macro";
         };
 
-        macro_switch_language: macro_switch_language {
+        macro_switch_language_legacy: macro_switch_language_legacy {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&tog LAYER_QWERTY &kp LA(SPACE)>;
+            label = "Switch Language Macro";
+        };
+
+        macro_switch_language: macro_switch_language {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to1>, <&to MACRO_PLACEHOLDER>, <&kp LA(SPACE)>;
             label = "Switch Language Macro";
         };
 
@@ -113,7 +120,7 @@
         };
         combo_switch_language {
             key-positions = <15 36>;
-            bindings = <&macro_switch_language>;
+            bindings = <&macro_switch_language_legacy>;
         };
         combo_toggle_number_layer {
             key-positions = <14 36>;
@@ -126,6 +133,25 @@
         combo_toggle_fn_layer {
             key-positions = <13 36>;
             bindings = <&tog LAYER_FN>;
+        };
+
+        
+        combo_enter_cyrillic_layer {
+            key-positions = <31 40>;
+            layers = <LAYER_DVORAK
+                      LAYER_SPEC
+                      LAYER_NUMBER
+                      LAYER_NAV
+                      LAYER_FN
+                      LAYER_HOTKEY
+                      LAYER_MOUSE
+                     >;
+            bindings = <&macro_switch_language LAYER_QWERTY>;
+        };
+        combo_escape_cyrillic_layer_to_dvorak {
+            key-positions = <19 40>;
+            layers = <LAYER_QWERTY>;
+            bindings = <&macro_switch_language LAYER_DVORAK>;
         };
 
 
