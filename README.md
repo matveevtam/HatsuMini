@@ -19,9 +19,9 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [x] layer switch combos
     - [x] layer switch hold-tap
     - [x] scroll
-    - [ ] dvorak keys
-    - [ ] qwerty keys
-    - [ ] qwerty combos
+    - [x] dvorak keys
+    - [x] qwerty keys
+    - [x] qwerty combos
     - [ ] special keys
     - [ ] number keys
     - [ ] nav keys
