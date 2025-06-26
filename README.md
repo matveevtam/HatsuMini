@@ -17,7 +17,7 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
 - [ ] Sync layout with cheatsheet v2, including homerow mods and compose key
     - [x] common keys
     - [x] layer switch combos
-    - [ ] layer switch hold-tap
+    - [x] layer switch hold-tap
     - [ ] scroll
     - [ ] dvorak keys
     - [ ] qwerty keys
@@ -27,8 +27,9 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [ ] nav keys
     - [ ] fn keys
     - [ ] mouse keys
+    - [ ] blank keys instead of transparent
 - [ ] Add something to Hotkey Layer and assign switching to it
-- [ ] Try adding auto-scroll: press to start scrolling, press again to stop
+- [ ] Try adding auto-scroll: press to start scrolling, press again to stop - look at Key Repeat behavior
 - [ ] try snipe layer
 - [ ] Try changing scroll speed
 - [ ] try automouse layer (AML)
