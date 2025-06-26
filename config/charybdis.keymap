@@ -415,9 +415,9 @@
         layer_dvorak {
             label = "Dvorak";
             bindings = <
-                &kp GRAVE    LT_FN SEMI    LT_SPC COMMA    LT_NAV DOT    &kp P    &kp Y            &kp F    &kp G    &kp C    &kp R    &kp L    &kp SLASH
-                &kp BSPC     LT_HOT A      LT_NUM O        LT_MOU E      &kp U    &kp I            &kp D    &kp H    &kp T    &kp N    &kp S    &kp MINUS
-                &kp DEL      &kp APOS      &kp Q           &kp J         &kp K    &kp X            &kp B    &kp M    &kp W    &kp V    &kp Z    &kp BACKSLASH
+                &kp GRAVE    LT_FN SEMI    LT_SPC COMMA    LT_NAV DOT    &kp P    &kp Y            &kp F    &kp G    &kp C       &kp R    &kp L    &kp SLASH
+                &kp BSPC     LT_HOT A      LT_NUM O        LT_MOU E      &kp U    &kp I            &kp D    &kp H    LT_SCR T    &kp N    &kp S    &kp MINUS
+                &kp DEL      &kp APOS      &kp Q           &kp J         &kp K    &kp X            &kp B    &kp M    &kp W       &kp V    &kp Z    &kp BACKSLASH
 
                                                       &kp TAB    &kp SPACE    &kp ENTER            &mkp MB1    &mkp MB2
             >;
@@ -426,9 +426,9 @@
         layer_qwerty {
             label = "Qwerty";
             bindings = <
-                &kp GRAVE    LLT_FN Q     LLT_SPC W     LLT_NAV E    &kp R    &kp T            &kp Y    &kp U    &kp I       &kp O      &kp P            &trans
-                &trans       LLT_HOT A    LLT_NUM S     LLT_MOU D    &kp F    &kp G            &kp H    &kp J    &kp K       &kp L      &kp SEMICOLON    &trans
-                &trans       &kp Z        &kp X         &kp C        &kp V    &kp B            &kp N    &kp M    &kp COMMA   &kp DOT    &kp SLASH        &trans
+                &kp GRAVE    LLT_FN Q     LLT_SPC W     LLT_NAV E    &kp R    &kp T            &kp Y    &kp U    &kp I          &kp O      &kp P            &trans
+                &trans       LLT_HOT A    LLT_NUM S     LLT_MOU D    &kp F    &kp G            &kp H    &kp J    LT_SCR K       &kp L      &kp SEMICOLON    &trans
+                &trans       &kp Z        &kp X         &kp C        &kp V    &kp B            &kp N    &kp M    &kp COMMA      &kp DOT    &kp SLASH        &trans
 
                                                        &trans    &trans    &trans              &trans             &trans
             >;
@@ -461,9 +461,9 @@
         layer_nav {
             label = "Navigation";
             bindings = <
-                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &kp HOME    &trans      &kp PG_UP    &trans    &trans
-                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &kp END     &kp UP      &kp PG_DN    &trans    &trans
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp LEFT    &kp DOWN    &kp RIGHT    &trans    &trans
+                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &kp HOME    &trans         &kp PG_UP    &trans    &trans
+                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &kp END     LT_SCR UP      &kp PG_DN    &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp LEFT    &kp DOWN       &kp RIGHT    &trans    &trans
 
                                               &trans    &trans    &trans            &trans        &trans
             >;
@@ -472,9 +472,9 @@
         layer_fn {
             label = "FN";
             bindings = <
-                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &kp F9    &kp F10    &kp F11    &kp F12    &trans
-                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &kp F5    &kp F6     &kp F7     &kp F8     &sys_reset
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp F1    &kp F2     &kp F3     &kp F4     &trans
+                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &kp F9    &kp F10       &kp F11    &kp F12    &trans
+                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &kp F5    LT_SCR F6     &kp F7     &kp F8     &sys_reset
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp F1    &kp F2        &kp F3     &kp F4     &trans
 
                                               &trans    &trans    &trans            &trans    &trans
             >;
@@ -484,7 +484,7 @@
             label = "Hotkey";
             bindings = <
                 &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &trans    &trans    &trans    &trans    &trans
-                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &trans    &trans    &trans    &trans    &trans
+                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &trans    MO_SCR    &trans    &trans    &trans
                 &trans    &trans    &trans    &trans    &trans    &trans            &trans    &trans    &trans    &trans    &trans    &trans
 
                                               &trans    &trans    &trans            &trans    &trans
