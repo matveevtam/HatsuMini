@@ -13,14 +13,26 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [x] Implement POC for switching to Russian and from Russian to other layers - using a tap combo
     - [x] Implement POC for switching to Russian and from Russian to other layers - using hold-tap behavior
     - [ ] Cyrillic layout should be able to switch to other layouts but with switching language at the same time
-    - [ ] Mirror layer switch buttons on the right hand
-- [ ] Assign RALT as COMPOSE KEY
-- [ ] Try dual behavior for thumb keys (press for key, hold for modifier): left hand space-enter-backspace, right hand mb1-mb2
+    - [ ] Sync layer switching with cheatsheet v2
+- [ ] Sync layout with cheatsheet v2, including homerow mods and compose key
+    - [x] common keys
+    - [x] layer switch combos
+    - [ ] layer switch hold-tap
+    - [ ] scroll
+    - [ ] dvorak keys
+    - [ ] qwerty keys
+    - [ ] qwerty combos
+    - [ ] special keys
+    - [ ] number keys
+    - [ ] nav keys
+    - [ ] fn keys
+    - [ ] mouse keys
 - [ ] Add something to Hotkey Layer and assign switching to it
-- [ ] Add auto-scroll: press to start scrolling, press again to stop
-- [ ] Try homerow mods
-- [ ] try automouse layer (AML)
+- [ ] Try adding auto-scroll: press to start scrolling, press again to stop
 - [ ] try snipe layer
+- [ ] Try changing scroll speed
+- [ ] try automouse layer (AML)
+- [ ] Add combo to put the device in bootloader mode
 
 
 ### Special characters
