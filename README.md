@@ -28,7 +28,7 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [x] mouse keys
     - [x] blank keys instead of transparent
     - [x] homerow mods - copypaste from hold-tap article
-- [ ] Fixes
+- [x] Fixes
     - [x] switching from cyrillic to other layers doesn't switch language
     - [x] cyrillic layer hold doesn't switch language
     - [x] in navigation and mouse layers right hand mods should be disabled
