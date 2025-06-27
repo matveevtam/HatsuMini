@@ -167,7 +167,7 @@
         macro_switch_language: macro_switch_language {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1>, <&to MACRO_PLACEHOLDER>, <&kp LANG_TOGGLE>;
+            bindings = <&macro_param_1to1>, <&macro_tap &to MACRO_PLACEHOLDER>, <&macro_tap &kp LANG_TOGGLE>;
             display-name = "Switch Language Macro";
         };
 
@@ -199,7 +199,7 @@
     combos {
         compatible = "zmk,combos";
 
-    // ======== Common keys - no cyrillic layer ========
+    // ======== Common keys ========
         combo_esc {
             key-positions = <0 1>;
             bindings = <&kp ESC>;
@@ -254,7 +254,7 @@
             layers = <TYPING_LAYERS_NO_QWERTY>;
             bindings = <&kp RIGHT_BRACKET>;
         };
-    // ======== Common keys - no cyrillic layer ========
+    // ======== Common keys ========
 
     // ======== Switching to regular layers ========
         // left hand
