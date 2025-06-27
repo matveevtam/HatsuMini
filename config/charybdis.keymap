@@ -493,9 +493,9 @@
         layer_nav {
             label = "Navigation";
             bindings = <
-                &none     MO_FN      MO_SPC     MO_NAV     &none     &none            &none       &none           &none           &none            &none          &none
-                &trans    MO_HOT     MO_NUM     MO_MOU     &none     &none            &none       &kp PG_DN       LT_SCR UP       &kp PG_UP        &none          &none
-                &trans    &trans     &trans     &trans     &trans    &none            &kp HOME    HMR_CTR LEFT    HMR_CMD DOWN    HMR_ALT RIGHT    HMR_SHF END    &none
+                &none     MO_FN      MO_SPC     MO_NAV     &none     &none            &none       &none        &none        &none        &none      &none
+                &trans    MO_HOT     MO_NUM     MO_MOU     &none     &none            &none       &kp PG_DN    LT_SCR UP    &kp PG_UP    &none      &none
+                &trans    &trans     &trans     &trans     &trans    &none            &kp HOME    &kp LEFT     &kp DOWN     &kp RIGHT    &kp END    &none
 
                                                 &trans    &trans    &trans            &trans        &trans
             >;

@@ -29,8 +29,9 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [x] blank keys instead of transparent
     - [x] homerow mods - copypaste from hold-tap article
 - [ ] Fixes
-    - [ ] switching from cyrillic to other layers doesn't switch language
-    - [ ] cyrillic layer hold doesn't switch language
+    - [x] switching from cyrillic to other layers doesn't switch language
+    - [x] cyrillic layer hold doesn't switch language
+    - [x] in navigation and mouse layers right hand mods should be disabled
 - [ ] Add MB1 and MB2 to hold left and right from scroll hold
 - [ ] Add something to Hotkey Layer and assign switching to it
 - [ ] Try adding auto-scroll: press to start scrolling, press again to stop - look at Key Repeat behavior
