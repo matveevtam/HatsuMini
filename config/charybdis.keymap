@@ -412,11 +412,11 @@
         layer_special {
             label = "Special";
             bindings = <
-                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &kp AMPS    &kp ASTRK        &kp EQUAL    &kp MINUS        &trans
-                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &kp DLLR    LT_SCR PRCNT     &kp CARET    &kp BACKSLASH    &trans
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp EXCL    &kp AT           &kp HASH     &kp SLASH        &trans
+                &none     MO_FN     MO_SPC    MO_NAV    &none    &none            &none    &kp AMPS    &kp ASTRK        &kp EQUAL    &kp MINUS        &none
+                &trans    MO_HOT    MO_NUM    MO_MOU    &none    &none            &none    &kp DLLR    LT_SCR PRCNT     &kp CARET    &kp BACKSLASH    &none
+                &trans    &none     &none     &none     &none    &none            &none    &kp EXCL    &kp AT           &kp HASH     &kp SLASH        &none
 
-                                              &trans    &trans    &trans            &trans    &trans
+                                            &trans    &trans    &trans            &trans    &trans
             >;
         };
 
@@ -424,55 +424,55 @@
         layer_number {
             label = "Number";
             bindings = <
-                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &kp MINUS    &kp N7    &kp N8        &kp N9    &kp SLASH    &kp CARET
-                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &kp PLUS     &kp N4    LT_SCR N5     &kp N6    &kp ASTRK    &kp EQUAL
-                &trans    &trans    &trans    &trans    &trans    &trans            &kp N0       &kp N1    &kp N2        &kp N3    &kp DOT      &trans
+                &none     MO_FN     MO_SPC    MO_NAV    &none    &none            &kp MINUS    &kp N7    &kp N8        &kp N9    &kp SLASH    &kp CARET
+                &trans    MO_HOT    MO_NUM    MO_MOU    &none    &none            &kp PLUS     &kp N4    LT_SCR N5     &kp N6    &kp ASTRK    &kp EQUAL
+                &trans    &none     &none     &none     &none    &none            &kp N0       &kp N1    &kp N2        &kp N3    &kp DOT      &none
 
-                                              &trans    &trans    &trans            &trans      &trans
+                                            &trans    &trans    &trans            &trans      &trans
             >;
         };
 
         layer_nav {
             label = "Navigation";
             bindings = <
-                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans      &trans       &trans         &trans       &trans     &trans
-                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans      &kp PG_DN    LT_SCR UP      &kp PG_UP    &trans     &trans
-                &trans    &trans    &trans    &trans    &trans    &trans            &kp HOME    &kp LEFT     &kp DOWN       &kp RIGHT    &kp END    &trans
+                &none     MO_FN     MO_SPC    MO_NAV    &none    &none            &none       &none        &none          &none        &none      &none
+                &trans    MO_HOT    MO_NUM    MO_MOU    &none    &none            &none       &kp PG_DN    LT_SCR UP      &kp PG_UP    &none      &none
+                &trans    &none     &none     &none     &none    &none            &kp HOME    &kp LEFT     &kp DOWN       &kp RIGHT    &kp END    &none
 
-                                              &trans    &trans    &trans            &trans        &trans
+                                            &trans    &trans    &trans            &trans        &trans
             >;
         };
 
         layer_fn {
             label = "FN";
             bindings = <
-                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &kp F9    &kp F10       &kp F11    &kp F12    &bootloader
-                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &kp F5    LT_SCR F6     &kp F7     &kp F8     &sys_reset
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp F1    &kp F2        &kp F3     &kp F4     &trans
+                &none     MO_FN     MO_SPC    MO_NAV    &none    &none            &none    &kp F9    &kp F10       &kp F11    &kp F12    &bootloader
+                &trans    MO_HOT    MO_NUM    MO_MOU    &none    &none            &none    &kp F5    LT_SCR F6     &kp F7     &kp F8     &sys_reset
+                &trans    &none     &none     &none     &none    &none            &none    &kp F1    &kp F2        &kp F3     &kp F4     &none
 
-                                              &trans    &trans    &trans            &trans    &trans
+                                            &trans    &trans    &trans            &trans    &trans
             >;
         };
         
         layer_hotkey {
             label = "Hotkey";
             bindings = <
-                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &trans    &trans    &trans    &trans    &trans
-                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &trans    MO_SCR    &trans    &trans    &trans
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &trans    &trans    &trans    &trans    &trans
+                &none     MO_FN     MO_SPC    MO_NAV    &none    &none            &none    &none    &none     &none    &none    &none
+                &trans    MO_HOT    MO_NUM    MO_MOU    &none    &none            &none    &none    MO_SCR    &none    &none    &none
+                &trans    &none     &none     &none     &none    &none            &none    &none    &none     &none    &none    &none
 
-                                              &trans    &trans    &trans            &trans    &trans
+                                            &trans    &trans    &trans            &trans    &trans
             >;
         };
 
         layer_mouse {
             label = "Mouse";
             bindings = <
-                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &trans       &trans              &trans       &trans             &trans
-                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &mkp MB1     &lmt LR_SCR MB3     &mkp MB2     &trans             &trans
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &mkp MB4     &trans              &mkp MB5     &mo LAYER_SNIPE    &trans
+                &none     MO_FN     MO_SPC    MO_NAV    &none    &none            &none    &none        &none               &none        &none              &none
+                &trans    MO_HOT    MO_NUM    MO_MOU    &none    &none            &none    &mkp MB1     &lmt LR_SCR MB3     &mkp MB2     &none              &none
+                &trans    &none     &none     &none     &none    &none            &none    &mkp MB4     &none               &mkp MB5     &mo LAYER_SNIPE    &none
 
-                                              &trans    &trans    &trans            &trans    &trans
+                                            &trans    &trans    &trans            &trans    &trans
             >;
         };
         

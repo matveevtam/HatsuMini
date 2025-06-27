@@ -27,7 +27,7 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [x] nav keys
     - [x] fn keys
     - [x] mouse keys
-    - [ ] blank keys instead of transparent
+    - [x] blank keys instead of transparent
     - [ ] homerow mods - copypaste from hold-tap article
 - [ ] Add something to Hotkey Layer and assign switching to it
 - [ ] Try adding auto-scroll: press to start scrolling, press again to stop - look at Key Repeat behavior
