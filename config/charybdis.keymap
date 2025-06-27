@@ -412,9 +412,9 @@
         layer_special {
             label = "Special";
             bindings = <
-                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &kp AMPS    &kp ASTRK        &kp EQUAL    &trans    &trans
-                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &kp DLLR    LT_SCR PRCNT     &kp CARET    &trans    &trans
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp EXCL    &kp AT           &kp HASH     &trans    &trans
+                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &kp AMPS    &kp ASTRK        &kp EQUAL    &kp MINUS        &trans
+                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &kp DLLR    LT_SCR PRCNT     &kp CARET    &kp BACKSLASH    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp EXCL    &kp AT           &kp HASH     &kp SLASH        &trans
 
                                               &trans    &trans    &trans            &trans    &trans
             >;
@@ -424,8 +424,8 @@
         layer_number {
             label = "Number";
             bindings = <
-                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &kp MINUS    &kp N7    &kp N8        &kp N9    &kp SLASH    &trans
-                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &kp PLUS     &kp N4    LT_SCR N5     &kp N6    &kp ASTRK    &trans
+                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &kp MINUS    &kp N7    &kp N8        &kp N9    &kp SLASH    &kp CARET
+                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &kp PLUS     &kp N4    LT_SCR N5     &kp N6    &kp ASTRK    &kp EQUAL
                 &trans    &trans    &trans    &trans    &trans    &trans            &kp N0       &kp N1    &kp N2        &kp N3    &kp DOT      &trans
 
                                               &trans    &trans    &trans            &trans      &trans
@@ -435,9 +435,9 @@
         layer_nav {
             label = "Navigation";
             bindings = <
-                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &kp HOME    &trans         &kp PG_UP    &trans    &trans
-                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &kp END     LT_SCR UP      &kp PG_DN    &trans    &trans
-                &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp LEFT    &kp DOWN       &kp RIGHT    &trans    &trans
+                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans      &trans       &trans         &trans       &trans     &trans
+                &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans      &kp PG_DN    LT_SCR UP      &kp PG_UP    &trans     &trans
+                &trans    &trans    &trans    &trans    &trans    &trans            &kp HOME    &kp LEFT     &kp DOWN       &kp RIGHT    &kp END    &trans
 
                                               &trans    &trans    &trans            &trans        &trans
             >;
@@ -446,7 +446,7 @@
         layer_fn {
             label = "FN";
             bindings = <
-                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &kp F9    &kp F10       &kp F11    &kp F12    &trans
+                &trans    MO_FN     MO_SPC    MO_NAV    &trans    &trans            &trans    &kp F9    &kp F10       &kp F11    &kp F12    &bootloader
                 &trans    MO_HOT    MO_NUM    MO_MOU    &trans    &trans            &trans    &kp F5    LT_SCR F6     &kp F7     &kp F8     &sys_reset
                 &trans    &trans    &trans    &trans    &trans    &trans            &trans    &kp F1    &kp F2        &kp F3     &kp F4     &trans
 

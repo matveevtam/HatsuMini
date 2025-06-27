@@ -22,18 +22,18 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [x] dvorak keys
     - [x] qwerty keys
     - [x] qwerty combos
-    - [ ] special keys
-    - [ ] number keys
-    - [ ] nav keys
-    - [ ] fn keys
-    - [ ] mouse keys
+    - [x] special keys
+    - [x] number keys
+    - [x] nav keys
+    - [x] fn keys
+    - [x] mouse keys
     - [ ] blank keys instead of transparent
+    - [ ] homerow mods - copypaste from hold-tap article
 - [ ] Add something to Hotkey Layer and assign switching to it
 - [ ] Try adding auto-scroll: press to start scrolling, press again to stop - look at Key Repeat behavior
 - [ ] try snipe layer
 - [ ] Try changing scroll speed
 - [ ] try automouse layer (AML)
-- [ ] Add combo to put the device in bootloader mode
 
 
 ### Special characters
