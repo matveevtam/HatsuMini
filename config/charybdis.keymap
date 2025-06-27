@@ -256,66 +256,80 @@
         };
     // ======== Common keys ========
 
-    // ======== Switching to regular layers ========
+    // ======== Switching between regular layers ========
         // left hand
         combo_to_dvorak_layer_lh {
             key-positions = <16 LMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_DVORAK>;
         };
         combo_to_nav_layer_lh {
             key-positions = <3 LMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_NAV>;
         };
         combo_to_mouse_layer_lh {
             key-positions = <15 LMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_MOUSE>;
         };
         combo_to_spec_layer_lh {
             key-positions = <2 LMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_SPEC>;
         };
         combo_to_numbers_layer_lh {
             key-positions = <14 LMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_NUMBER>;
         };
         combo_to_fn_layer_lh {
             key-positions = <1 LMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_FN>;
         };
         combo_to_hotkey_layer_lh {
             key-positions = <13 LMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_HOTKEY>;
         };
         // right hand
         combo_to_dvorak_layer_rh {
             key-positions = <19 RMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_DVORAK>;
         };
         combo_to_nav_layer_rh {
             key-positions = <8 RMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_NAV>;
         };
         combo_to_mouse_layer_rh {
             key-positions = <20 RMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_MOUSE>;
         };
         combo_to_spec_layer_rh {
             key-positions = <9 RMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_SPEC>;
         };
         combo_to_numbers_layer_rh {
             key-positions = <21 RMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_NUMBER>;
         };
         combo_to_fn_layer_rh {
             key-positions = <10 RMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_FN>;
         };
         combo_to_hotkey_layer_rh {
             key-positions = <22 RMOD>;
+            layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_HOTKEY>;
         };
-    // ======== Switching to regular layers ========
+    // ======== Switching between regular layers ========
 
     // ======== Switching to and from Cyrillic layer ========
         // left hand
