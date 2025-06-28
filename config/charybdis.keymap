@@ -53,27 +53,27 @@
 #define LR_SCR LAYER_SCROLL
 
 
-#define LT_SPC      &lt  LAYER_SPEC
-#define LLT_SPC     &llt LAYER_SPEC
-#define MO_SPC      &mo  LAYER_SPEC
-#define LT_NUM      &lt  LAYER_NUMBER
-#define LLT_NUM     &llt LAYER_NUMBER
-#define MO_NUM      &mo  LAYER_NUMBER
-#define LT_NAV      &lt  LAYER_NAV
-#define LLT_NAV     &llt LAYER_NAV
-#define MO_NAV      &mo  LAYER_NAV
-#define LT_FN       &lt  LAYER_FN
-#define LLT_FN      &llt LAYER_FN
-#define MO_FN       &mo  LAYER_FN
-#define LT_MOU      &lt  LAYER_MOUSE
-#define LLT_MOU     &llt LAYER_MOUSE
-#define MO_MOU      &mo  LAYER_MOUSE
-#define LT_SCR      &lt  LAYER_SCROLL
-#define LLT_SCR     &llt LAYER_SCROLL
-#define MO_SCR      &mo  LAYER_SCROLL
-#define LT_HOT      &lt  LAYER_HOTKEY
-#define LLT_HOT     &llt LAYER_HOTKEY
-#define MO_HOT      &mo  LAYER_HOTKEY
+#define LT_SPC      &lt     LAYER_SPEC
+#define LLT_SPC     &llt    LAYER_SPEC
+#define MO_SPC      &exmo   LAYER_SPEC
+#define LT_NUM      &lt     LAYER_NUMBER
+#define LLT_NUM     &llt    LAYER_NUMBER
+#define MO_NUM      &exmo   LAYER_NUMBER
+#define LT_NAV      &lt     LAYER_NAV
+#define LLT_NAV     &llt    LAYER_NAV
+#define MO_NAV      &exmo   LAYER_NAV
+#define LT_FN       &lt     LAYER_FN
+#define LLT_FN      &llt    LAYER_FN
+#define MO_FN       &exmo   LAYER_FN
+#define LT_MOU      &lt     LAYER_MOUSE
+#define LLT_MOU     &llt    LAYER_MOUSE
+#define MO_MOU      &exmo   LAYER_MOUSE
+#define LT_SCR      &lt     LAYER_SCROLL
+#define LLT_SCR     &llt    LAYER_SCROLL
+#define MO_SCR      &exmo   LAYER_SCROLL
+#define LT_HOT      &lt     LAYER_HOTKEY
+#define LLT_HOT     &llt    LAYER_HOTKEY
+#define MO_HOT      &exmo   LAYER_HOTKEY
 
 
 #define LANG_TOGGLE LA(SPACE)
@@ -184,6 +184,22 @@
                 , <&macro_tap &kp LANG_TOGGLE>
                 ;
             display-name = "Switch Language Hold Macro";
+        };
+        
+        // to layer while hold, then back
+        // param1: layer to go to while key is held
+        // param2: layer to go to when key is released
+        exmo: macro_exclusive_mo {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings 
+                = <&macro_param_1to1>
+                , <&macro_tap &to MACRO_PLACEHOLDER>
+                , <&macro_pause_for_release>
+                , <&macro_param_2to1>
+                , <&macro_tap &to MACRO_PLACEHOLDER>
+                ;
+            display-name = "To Layer Hold Macro";
         };
 
     };
@@ -451,7 +467,7 @@
                 &kp BSPC     LT_HOT A        LT_NUM O        LT_MOU E      &kp U        &kp I            &kp D    &kp H        LT_SCR T     &kp N        &kp S        &kp MINUS
                 &kp DEL      HML_SHF APOS    HML_ALT Q       HML_CMD J     HML_CTR K    &kp X            &kp B    HMR_CTR M    HMR_CMD W    HMR_ALT V    HMR_SHF Z    &kp BACKSLASH
 
-                                                            &kp TAB    &kp SPACE    &kp ENTER            &mkp MB1    &mkp MB2
+                                                            &kp TAB    &kp SPACE    &kp ENTER            &mkp MB2    &mkp MB1
             >;
         };
 
@@ -470,11 +486,11 @@
         layer_special {
             label = "Special";
             bindings = <
-                &none     MO_FN      MO_SPC     MO_NAV     &none     &none            &none    &kp AMPS        &kp ASTRK       &kp EQUAL        &kp MINUS        &none
-                &trans    MO_HOT     MO_NUM     MO_MOU     &none     &none            &none    &kp DLLR        LT_SCR PRCNT    &kp CARET        &kp BACKSLASH    &none
-                &trans    &trans     &trans     &trans     &trans    &none            &none    HMR_CTR EXCL    HMR_CMD AT      HMR_ALT HASH     HMR_SHF SLASH    &none
+                &none     MO_FN LR_SPC      MO_SPC LR_SPC     MO_NAV LR_SPC     &none     &none            &none    &kp AMPS        &kp ASTRK       &kp EQUAL        &kp MINUS        &none
+                &trans    MO_HOT LR_SPC     MO_NUM LR_SPC     MO_MOU LR_SPC     &none     &none            &none    &kp DLLR        LT_SCR PRCNT    &kp CARET        &kp BACKSLASH    &none
+                &trans    &trans            &trans            &trans            &trans    &none            &none    HMR_CTR EXCL    HMR_CMD AT      HMR_ALT HASH     HMR_SHF SLASH    &none
 
-                                                &trans    &trans    &trans            &trans    &trans
+                                                                     &trans    &trans    &trans            &trans    &trans
             >;
         };
 
@@ -482,55 +498,55 @@
         layer_number {
             label = "Number";
             bindings = <
-                &none     MO_FN      MO_SPC     MO_NAV     &none     &none            &kp MINUS    &kp N7        &kp N8        &kp N9        &kp SLASH      &kp CARET
-                &trans    MO_HOT     MO_NUM     MO_MOU     &none     &none            &kp PLUS     &kp N4        LT_SCR N5     &kp N6        &kp ASTRK      &kp EQUAL
-                &trans    &trans     &trans     &trans     &trans    &none            &kp N0       HMR_CTR N1    HMR_CMD N2    HMR_ALT N3    HMR_SHF DOT    &none
+                &none     MO_FN LR_NUM      MO_SPC LR_NUM     MO_NAV LR_NUM     &none     &none            &kp MINUS    &kp N7        &kp N8        &kp N9        &kp SLASH      &kp CARET
+                &trans    MO_HOT LR_NUM     MO_NUM LR_NUM     MO_MOU LR_NUM     &none     &none            &kp PLUS     &kp N4        LT_SCR N5     &kp N6        &kp ASTRK      &kp EQUAL
+                &trans    &trans            &trans            &trans            &trans    &none            &kp N0       HMR_CTR N1    HMR_CMD N2    HMR_ALT N3    HMR_SHF DOT    &none
 
-                                                &trans    &trans    &trans            &trans      &trans
+                                                                     &trans    &trans    &trans            &trans      &trans
             >;
         };
 
         layer_nav {
             label = "Navigation";
             bindings = <
-                &none     MO_FN      MO_SPC     MO_NAV     &none     &none            &none       &none        &none        &none        &none      &none
-                &trans    MO_HOT     MO_NUM     MO_MOU     &none     &none            &none       &kp PG_DN    LT_SCR UP    &kp PG_UP    &none      &none
-                &trans    &trans     &trans     &trans     &trans    &none            &kp HOME    &kp LEFT     &kp DOWN     &kp RIGHT    &kp END    &none
+                &none     MO_FN LR_NAV      MO_SPC LR_NAV     MO_NAV LR_NAV     &none     &none            &none       &none        &none        &none        &none      &none
+                &trans    MO_HOT LR_NAV     MO_NUM LR_NAV     MO_MOU LR_NAV     &none     &none            &none       &kp PG_DN    LT_SCR UP    &kp PG_UP    &none      &none
+                &trans    &trans            &trans            &trans            &trans    &none            &kp HOME    &kp LEFT     &kp DOWN     &kp RIGHT    &kp END    &none
 
-                                                &trans    &trans    &trans            &trans        &trans
+                                                                     &trans    &trans    &trans            &trans        &trans
             >;
         };
 
         layer_fn {
             label = "FN";
             bindings = <
-                &none     MO_FN      MO_SPC     MO_NAV     &none     &none            &none    &kp F9        &kp F10       &kp F11       &kp F12       &bootloader
-                &trans    MO_HOT     MO_NUM     MO_MOU     &none     &none            &none    &kp F5        LT_SCR F6     &kp F7        &kp F8        &sys_reset
-                &trans    &trans     &trans     &trans     &trans    &none            &none    HMR_CTR F1    HMR_CMD F2    HMR_ALT F3    HMR_SHF F4    &none
+                &none     MO_FN LR_FN      MO_SPC LR_FN     MO_NAV LR_FN     &none     &none            &none    &kp F9        &kp F10       &kp F11       &kp F12       &bootloader
+                &trans    MO_HOT LR_FN     MO_NUM LR_FN     MO_MOU LR_FN     &none     &none            &none    &kp F5        LT_SCR F6     &kp F7        &kp F8        &sys_reset
+                &trans    &trans           &trans           &trans           &trans    &none            &none    HMR_CTR F1    HMR_CMD F2    HMR_ALT F3    HMR_SHF F4    &none
 
-                                                &trans    &trans    &trans            &trans    &trans
+                                                                  &trans    &trans    &trans            &trans    &trans
             >;
         };
         
         layer_hotkey {
             label = "Hotkey";
             bindings = <
-                &none     MO_FN      MO_SPC     MO_NAV     &none     &none            &none    &none     &none      &none     &none     &none
-                &trans    MO_HOT     MO_NUM     MO_MOU     &none     &none            &none    &none     MO_SCR     &none     &none     &none
-                &trans    &trans     &trans     &trans     &trans    &none            &none    &trans    &trans     &trans    &trans    &none
+                &none     MO_FN LR_HOT      MO_SPC LR_HOT     MO_NAV LR_HOT     &none     &none            &none    &none     &none      &none     &none     &none
+                &trans    MO_HOT LR_HOT     MO_NUM LR_HOT     MO_MOU LR_HOT     &none     &none            &none    &none     MO_SCR     &none     &none     &none
+                &trans    &trans            &trans            &trans            &trans    &none            &none    &trans    &trans     &trans    &trans    &none
 
-                                                &trans    &trans    &trans            &trans    &trans
+                                                                     &trans    &trans    &trans            &trans    &trans
             >;
         };
 
         layer_mouse {
             label = "Mouse";
             bindings = <
-                &none     MO_FN      MO_SPC     MO_NAV     &none     &none            &none    &none        &none               &none        &none              &none
-                &trans    MO_HOT     MO_NUM     MO_MOU     &none     &none            &none    &mkp MB1     &lmt LR_SCR MB3     &mkp MB2     &none              &none
-                &trans    &trans     &trans     &trans     &trans    &none            &none    &mkp MB4     &none               &mkp MB5     &mo LAYER_SNIPE    &none
+                &none     MO_FN LR_MOU      MO_SPC LR_MOU     MO_NAV LR_MOU     &none     &none            &none    &none        &none               &none        &none              &none
+                &trans    MO_HOT LR_MOU     MO_NUM LR_MOU     MO_MOU LR_MOU     &none     &none            &none    &mkp MB1     &lmt LR_SCR MB3     &mkp MB2     &none              &none
+                &trans    &trans            &trans            &trans            &trans    &none            &none    &mkp MB4     &none               &mkp MB5     &mo LAYER_SNIPE    &none
 
-                                                &trans    &trans    &trans            &trans    &trans
+                                                                     &trans    &trans    &trans            &trans    &trans
             >;
         };
         
