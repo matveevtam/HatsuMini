@@ -95,6 +95,10 @@
 #define HMB1 &hmtk MB1
 #define HMB2 &hmtk MB2
 
+&caps_word {
+    continue-list = <UNDERSCORE MINUS>;
+};
+
 / {
     behaviors {
         tog_on: toggle_layer_on_only {
@@ -242,6 +246,10 @@
         combo_mb3 {
             key-positions = <39 40>;
             bindings = <&mkp MB3>;
+        };
+        combo_caps_word {
+            key-positions = <23 35>;
+            bindings = <&caps_word>;
         };
         // left hand
         combo_paren_left_lh {

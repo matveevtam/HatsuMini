@@ -37,7 +37,7 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
 - [x] Swap forward slash and back slash
 - [x] Add PrintScreen
 - [x] Add MB1 and MB2 to hold left and right from scroll hold
-- [ ] Add caps word
+- [x] Add caps word
 - [ ] Ideas for v2:
     - [ ] merge numbers and specials - using shift and putting extra specials in top row
     - [ ] merge mouse and navigation - put navigation to left hand or top row
