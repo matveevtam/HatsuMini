@@ -79,8 +79,8 @@
 #define LANG_TOGGLE LA(SPACE)
 
 
-#define LMOD 36
-#define RMOD 40
+#define KEY_LMOD 36
+#define KEY_RMOD 40
 
 #define HML_SHF    &hml LSHFT
 #define HML_ALT    &hml LALT
@@ -220,6 +220,10 @@
             key-positions = <0 1>;
             bindings = <&kp ESC>;
         };
+        combo_printscreen {
+            key-positions = <0 12>;
+            bindings = <&kp PRINTSCREEN>;
+        };
         combo_ralt {
             key-positions = <12 24>;
             bindings = <&kp RALT>;
@@ -275,73 +279,73 @@
     // ======== Switching between regular layers ========
         // left hand
         combo_to_dvorak_layer_lh {
-            key-positions = <16 LMOD>;
+            key-positions = <16 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_DVORAK>;
         };
         combo_to_nav_layer_lh {
-            key-positions = <3 LMOD>;
+            key-positions = <3 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_NAV>;
         };
         combo_to_mouse_layer_lh {
-            key-positions = <15 LMOD>;
+            key-positions = <15 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_MOUSE>;
         };
         combo_to_spec_layer_lh {
-            key-positions = <2 LMOD>;
+            key-positions = <2 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_SPEC>;
         };
         combo_to_numbers_layer_lh {
-            key-positions = <14 LMOD>;
+            key-positions = <14 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_NUMBER>;
         };
         combo_to_fn_layer_lh {
-            key-positions = <1 LMOD>;
+            key-positions = <1 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_FN>;
         };
         combo_to_hotkey_layer_lh {
-            key-positions = <13 LMOD>;
+            key-positions = <13 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_HOTKEY>;
         };
         // right hand
         combo_to_dvorak_layer_rh {
-            key-positions = <19 RMOD>;
+            key-positions = <19 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_DVORAK>;
         };
         combo_to_nav_layer_rh {
-            key-positions = <8 RMOD>;
+            key-positions = <8 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_NAV>;
         };
         combo_to_mouse_layer_rh {
-            key-positions = <20 RMOD>;
+            key-positions = <20 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_MOUSE>;
         };
         combo_to_spec_layer_rh {
-            key-positions = <9 RMOD>;
+            key-positions = <9 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_SPEC>;
         };
         combo_to_numbers_layer_rh {
-            key-positions = <21 RMOD>;
+            key-positions = <21 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_NUMBER>;
         };
         combo_to_fn_layer_rh {
-            key-positions = <10 RMOD>;
+            key-positions = <10 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_FN>;
         };
         combo_to_hotkey_layer_rh {
-            key-positions = <22 RMOD>;
+            key-positions = <22 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&to LAYER_HOTKEY>;
         };
@@ -350,83 +354,83 @@
     // ======== Switching to and from Cyrillic layer ========
         // left hand
         combo_cyrillic_to_qwerty_layer_lh {
-            key-positions = <4 LMOD>;
+            key-positions = <4 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&macro_switch_language LAYER_QWERTY>;
         };
         combo_cyrillic_to_dvorak_layer_lh {
-            key-positions = <16 LMOD>;
+            key-positions = <16 KEY_LMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_DVORAK>;
         };
         combo_cyrillic_to_nav_layer_lh {
-            key-positions = <3 LMOD>;
+            key-positions = <3 KEY_LMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_NAV>;
         };
         combo_cyrillic_to_mouse_layer_lh {
-            key-positions = <15 LMOD>;
+            key-positions = <15 KEY_LMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_MOUSE>;
         };
         combo_cyrillic_to_spec_layer_lh {
-            key-positions = <2 LMOD>;
+            key-positions = <2 KEY_LMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_SPEC>;
         };
         combo_cyrillic_to_numbers_layer_lh {
-            key-positions = <14 LMOD>;
+            key-positions = <14 KEY_LMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_NUMBER>;
         };
         combo_cyrillic_to_fn_layer_lh {
-            key-positions = <1 LMOD>;
+            key-positions = <1 KEY_LMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_FN>;
         };
         combo_cyrillic_to_hotkey_layer_lh {
-            key-positions = <13 LMOD>;
+            key-positions = <13 KEY_LMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_HOTKEY>;
         };
         // right hand
         combo_cyrillic_to_qwerty_layer_rh {
-            key-positions = <7 RMOD>;
+            key-positions = <7 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&macro_switch_language LAYER_QWERTY>;
         };
         combo_cyrillic_to_dvorak_layer_rh {
-            key-positions = <19 RMOD>;
+            key-positions = <19 KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_DVORAK>;
         };
         combo_cyrillic_to_nav_layer_rh {
-            key-positions = <8 RMOD>;
+            key-positions = <8 KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_NAV>;
         };
         combo_cyrillic_to_mouse_layer_rh {
-            key-positions = <20 RMOD>;
+            key-positions = <20 KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_MOUSE>;
         };
         combo_cyrillic_to_spec_layer_rh {
-            key-positions = <9 RMOD>;
+            key-positions = <9 KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_SPEC>;
         };
         combo_cyrillic_to_numbers_layer_rh {
-            key-positions = <21 RMOD>;
+            key-positions = <21 KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_NUMBER>;
         };
         combo_cyrillic_to_fn_layer_rh {
-            key-positions = <10 RMOD>;
+            key-positions = <10 KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_FN>;
         };
         combo_cyrillic_to_hotkey_layer_rh {
-            key-positions = <22 RMOD>;
+            key-positions = <22 KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_HOTKEY>;
         };
@@ -463,9 +467,9 @@
         layer_dvorak {
             label = "Dvorak";
             bindings = <
-                &kp GRAVE    LT_FN SEMI      LT_SPC COMMA    LT_NAV DOT    &kp P        &kp Y            &kp F    &kp G        &kp C        &kp R        &kp L        &kp SLASH
+                &kp GRAVE    LT_FN SEMI      LT_SPC COMMA    LT_NAV DOT    &kp P        &kp Y            &kp F    &kp G        &kp C        &kp R        &kp L        &kp BACKSLASH
                 &kp BSPC     LT_HOT A        LT_NUM O        LT_MOU E      &kp U        &kp I            &kp D    &kp H        LT_SCR T     &kp N        &kp S        &kp MINUS
-                &kp DEL      HML_SHF APOS    HML_ALT Q       HML_CMD J     HML_CTR K    &kp X            &kp B    HMR_CTR M    HMR_CMD W    HMR_ALT V    HMR_SHF Z    &kp BACKSLASH
+                &kp DEL      HML_SHF APOS    HML_ALT Q       HML_CMD J     HML_CTR K    &kp X            &kp B    HMR_CTR M    HMR_CMD W    HMR_ALT V    HMR_SHF Z    &kp SLASH
 
                                                             &kp TAB    &kp SPACE    &kp ENTER            &mkp MB2    &mkp MB1
             >;
@@ -500,7 +504,7 @@
             bindings = <
                 &none     MO_FN LR_NUM      MO_SPC LR_NUM     MO_NAV LR_NUM     &none     &none            &kp MINUS    &kp N7        &kp N8        &kp N9        &kp SLASH      &kp CARET
                 &trans    MO_HOT LR_NUM     MO_NUM LR_NUM     MO_MOU LR_NUM     &none     &none            &kp PLUS     &kp N4        LT_SCR N5     &kp N6        &kp ASTRK      &kp EQUAL
-                &trans    &trans            &trans            &trans            &trans    &none            &kp N0       HMR_CTR N1    HMR_CMD N2    HMR_ALT N3    HMR_SHF DOT    &none
+                &trans    &trans            &trans            &trans            &trans    &none            &kp N0       HMR_CTR N1    HMR_CMD N2    HMR_ALT N3    HMR_SHF DOT    &kp COLON
 
                                                                      &trans    &trans    &trans            &trans      &trans
             >;

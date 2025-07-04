@@ -28,14 +28,22 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [x] mouse keys
     - [x] blank keys instead of transparent
     - [x] homerow mods - copypaste from hold-tap article
-- [ ] Fixes
+- [x] Fixes
     - [x] switching from cyrillic to other layers doesn't switch language
     - [x] cyrillic layer hold doesn't switch language
     - [x] in navigation and mouse layers right hand mods should be disabled
     - [x] MO_NUM, MO_SPEC etc are not working - maybe because layers have hierarchy and instead of &mo I need to use &to
-- [ ] Add colon to numbers
-- [ ] Add PrintScreen
+- [x] Add colon to numbers
+- [x] Swap forward slash and back slash
+- [x] Add PrintScreen
 - [ ] Add MB1 and MB2 to hold left and right from scroll hold
+- [ ] Add caps word
+- [ ] Ideas for v2:
+    - [ ] merge numbers and specials - using shift and putting extra specials in top row
+    - [ ] merge mouse and navigation - put navigation to left hand or top row
+    - [ ] move home row mods to middle row and put all layer switching to one bottom row
+    - [ ] add sticky mods: press KEY_LMOD+mod to make it sticky, then something else to unstick it
+    - [ ] add macos navigation layer: jump word, home/end
 - [ ] Add something to Hotkey Layer and assign switching to it
 - [ ] Try adding auto-scroll: press to start scrolling, press again to stop - look at Key Repeat behavior
 - [ ] try snipe layer
