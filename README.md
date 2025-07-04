@@ -36,7 +36,7 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
 - [x] Add colon to numbers
 - [x] Swap forward slash and back slash
 - [x] Add PrintScreen
-- [ ] Add MB1 and MB2 to hold left and right from scroll hold
+- [x] Add MB1 and MB2 to hold left and right from scroll hold
 - [ ] Add caps word
 - [ ] Ideas for v2:
     - [ ] merge numbers and specials - using shift and putting extra specials in top row

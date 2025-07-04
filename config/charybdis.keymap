@@ -92,6 +92,8 @@
 #define HMR_ALT    &hmr LALT
 #define HMR_SHF    &hmr LSHFT
 
+#define HMB1 &hmtk MB1
+#define HMB2 &hmtk MB2
 
 / {
     behaviors {
@@ -125,6 +127,15 @@
             tapping-term-ms = <200>;
             bindings = <&macro_switch_language_hold>, <&kp>;
             display-name = "Layer-Language-Tap v2";
+        };
+
+        hmtk: hold_mouse_tap_key {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mkp>, <&kp>;
+            display-name = "Hold Mouse Tap Key";
         };
 
         hml: home_row_mod_left {
@@ -468,7 +479,7 @@
             label = "Dvorak";
             bindings = <
                 &kp GRAVE    LT_FN SEMI      LT_SPC COMMA    LT_NAV DOT    &kp P        &kp Y            &kp F    &kp G        &kp C        &kp R        &kp L        &kp BACKSLASH
-                &kp BSPC     LT_HOT A        LT_NUM O        LT_MOU E      &kp U        &kp I            &kp D    &kp H        LT_SCR T     &kp N        &kp S        &kp MINUS
+                &kp BSPC     LT_HOT A        LT_NUM O        LT_MOU E      &kp U        &kp I            &kp D    HMB1 H       LT_SCR T     HMB2 N       &kp S        &kp MINUS
                 &kp DEL      HML_SHF APOS    HML_ALT Q       HML_CMD J     HML_CTR K    &kp X            &kp B    HMR_CTR M    HMR_CMD W    HMR_ALT V    HMR_SHF Z    &kp SLASH
 
                                                             &kp TAB    &kp SPACE    &kp ENTER            &mkp MB2    &mkp MB1
@@ -479,7 +490,7 @@
             label = "Qwerty";
             bindings = <
                 &kp GRAVE    LLT_FN Q     LLT_SPC W     LLT_NAV E    &kp R        &kp T            &kp Y    &kp U        &kp I            &kp O          &kp P            &kp LEFT_BRACKET
-                &trans       LLT_HOT A    LLT_NUM S     LLT_MOU D    &kp F        &kp G            &kp H    &kp J        LT_SCR K         &kp L          &kp SEMICOLON    &kp APOS
+                &trans       LLT_HOT A    LLT_NUM S     LLT_MOU D    &kp F        &kp G            &kp H    HMB1 J       LT_SCR K         HMB2 L         &kp SEMICOLON    &kp APOS
                 &trans       HML_SHF Z    HML_ALT X     HML_CMD C    HML_CTR V    &kp B            &kp N    HMR_CTR M    HMR_CMD COMMA    HMR_ALT DOT    HMR_SHF SLASH    &kp MINUS
 
                                                            &trans    &trans    &trans              &trans             &trans
@@ -491,7 +502,7 @@
             label = "Special";
             bindings = <
                 &none     MO_FN LR_SPC      MO_SPC LR_SPC     MO_NAV LR_SPC     &none     &none            &none    &kp AMPS        &kp ASTRK       &kp EQUAL        &kp MINUS        &none
-                &trans    MO_HOT LR_SPC     MO_NUM LR_SPC     MO_MOU LR_SPC     &none     &none            &none    &kp DLLR        LT_SCR PRCNT    &kp CARET        &kp BACKSLASH    &none
+                &trans    MO_HOT LR_SPC     MO_NUM LR_SPC     MO_MOU LR_SPC     &none     &none            &none    HMB1 DLLR       LT_SCR PRCNT    HMB2 CARET       &kp BACKSLASH    &none
                 &trans    &trans            &trans            &trans            &trans    &none            &none    HMR_CTR EXCL    HMR_CMD AT      HMR_ALT HASH     HMR_SHF SLASH    &none
 
                                                                      &trans    &trans    &trans            &trans    &trans
@@ -503,7 +514,7 @@
             label = "Number";
             bindings = <
                 &none     MO_FN LR_NUM      MO_SPC LR_NUM     MO_NAV LR_NUM     &none     &none            &kp MINUS    &kp N7        &kp N8        &kp N9        &kp SLASH      &kp CARET
-                &trans    MO_HOT LR_NUM     MO_NUM LR_NUM     MO_MOU LR_NUM     &none     &none            &kp PLUS     &kp N4        LT_SCR N5     &kp N6        &kp ASTRK      &kp EQUAL
+                &trans    MO_HOT LR_NUM     MO_NUM LR_NUM     MO_MOU LR_NUM     &none     &none            &kp PLUS     HMB1 N4       LT_SCR N5     HMB2 N6       &kp ASTRK      &kp EQUAL
                 &trans    &trans            &trans            &trans            &trans    &none            &kp N0       HMR_CTR N1    HMR_CMD N2    HMR_ALT N3    HMR_SHF DOT    &kp COLON
 
                                                                      &trans    &trans    &trans            &trans      &trans
@@ -513,9 +524,9 @@
         layer_nav {
             label = "Navigation";
             bindings = <
-                &none     MO_FN LR_NAV      MO_SPC LR_NAV     MO_NAV LR_NAV     &none     &none            &none       &none        &none        &none        &none      &none
-                &trans    MO_HOT LR_NAV     MO_NUM LR_NAV     MO_MOU LR_NAV     &none     &none            &none       &kp PG_DN    LT_SCR UP    &kp PG_UP    &none      &none
-                &trans    &trans            &trans            &trans            &trans    &none            &kp HOME    &kp LEFT     &kp DOWN     &kp RIGHT    &kp END    &none
+                &none     MO_FN LR_NAV      MO_SPC LR_NAV     MO_NAV LR_NAV     &none     &none            &none       &none         &none        &none         &none      &none
+                &trans    MO_HOT LR_NAV     MO_NUM LR_NAV     MO_MOU LR_NAV     &none     &none            &none       HMB1 PG_DN    LT_SCR UP    HMB2 PG_UP    &none      &none
+                &trans    &trans            &trans            &trans            &trans    &none            &kp HOME    &kp LEFT      &kp DOWN     &kp RIGHT     &kp END    &none
 
                                                                      &trans    &trans    &trans            &trans        &trans
             >;
@@ -525,7 +536,7 @@
             label = "FN";
             bindings = <
                 &none     MO_FN LR_FN      MO_SPC LR_FN     MO_NAV LR_FN     &none     &none            &none    &kp F9        &kp F10       &kp F11       &kp F12       &bootloader
-                &trans    MO_HOT LR_FN     MO_NUM LR_FN     MO_MOU LR_FN     &none     &none            &none    &kp F5        LT_SCR F6     &kp F7        &kp F8        &sys_reset
+                &trans    MO_HOT LR_FN     MO_NUM LR_FN     MO_MOU LR_FN     &none     &none            &none    HMB1 F5       LT_SCR F6     HMB2 F7       &kp F8        &sys_reset
                 &trans    &trans           &trans           &trans           &trans    &none            &none    HMR_CTR F1    HMR_CMD F2    HMR_ALT F3    HMR_SHF F4    &none
 
                                                                   &trans    &trans    &trans            &trans    &trans
