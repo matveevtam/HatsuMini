@@ -11,17 +11,17 @@
 
 #define LAYER_DVORAK        0
 #define LAYER_QWERTY        1
-#define LAYER_SPEC          2
-#define LAYER_NUMBER        3
-#define LAYER_NAV_LINUX     4
-#define LAYER_NAV_MACOS     5
-#define LAYER_NAV           6
-#define LAYER_FN            7
-#define LAYER_HOTKEY        8
-#define LAYER_MOUSE         9
-#define LAYER_SNIPE         10
-#define LAYER_SCROLL        11
-#define LAYER_MACOS         12
+#define LAYER_MACOS         2
+#define LAYER_SPEC          3
+#define LAYER_NUMBER        4
+#define LAYER_NAV_LINUX     5
+#define LAYER_NAV_MACOS     6
+#define LAYER_NAV           7
+#define LAYER_FN            8
+#define LAYER_HOTKEY        9
+#define LAYER_MOUSE         10
+#define LAYER_SNIPE         11
+#define LAYER_SCROLL        12
 
 #endif
 
