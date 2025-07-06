@@ -611,8 +611,8 @@
         layer_nav_linux {
             label = "Navigation Linux";
             bindings = <
-                &none     &none     &none     &none     &none     &none            &none       &none            &none    &none             &none    &none
-                &trans    &none     &none     &none     &none     &none            &none       HMB1 LC(LEFT)    &none    HMB2 LC(RIGHT)    &none    &none
+                &none     &none     &none     &none     &none     &none            &none       &none            &none    &none             &none      &kp L
+                &trans    &none     &none     &none     &none     &none            &none       HMB1 LC(LEFT)    &none    HMB2 LC(RIGHT)    &none      &none
                 &trans    &trans    &trans    &trans    &trans    &none            &kp HOME    &none            &none    &none             &kp END    &none
 
                                              &trans    &trans    &trans            &trans        &trans
@@ -622,7 +622,7 @@
         layer_nav_macos {
             label = "Navigation MacOS";
             bindings = <
-                &none     &none     &none     &none     &none     &none            &none           &kp LC(LEFT)     &none    &kp LC(RIGHT)     &none            &none
+                &none     &none     &none     &none     &none     &none            &none           &kp LC(LEFT)     &none    &kp LC(RIGHT)     &none            &kp M
                 &trans    &none     &none     &none     &none     &none            &none           HMB1 LA(LEFT)    &none    HMB2 LA(RIGHT)    &none            &none
                 &trans    &trans    &trans    &trans    &trans    &none            &kp LG(LEFT)    &none            &none    &none             &kp LG(RIGHT)    &none
 
@@ -633,7 +633,7 @@
         layer_nav {
             label = "Navigation";
             bindings = <
-                &none     MO_FN LR_NAV      MO_SPC LR_NAV     MO_NAV LR_NAV     &none     &none            &none        &trans      &none       &trans       &none        &none
+                &none     MO_FN LR_NAV      MO_SPC LR_NAV     MO_NAV LR_NAV     &none     &none            &none        &trans      &none       &trans       &none        &trans
                 &trans    MO_HOT LR_NAV     MO_NUM LR_NAV     MO_MOU LR_NAV     &none     &none            &kp PG_DN    &trans      &kp UP      &trans       &kp PG_UP    &none
                 &trans    &trans            &trans            &trans            &trans    &none            &trans       &kp LEFT    &kp DOWN    &kp RIGHT    &trans       &none
 
