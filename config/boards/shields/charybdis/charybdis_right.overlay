@@ -6,16 +6,24 @@
 
 #include "charybdis.dtsi"
 
-#define LAYER_DVORAK  0
-#define LAYER_QWERTY  1
-#define LAYER_SPEC    2
-#define LAYER_NUMBER  3
-#define LAYER_NAV     4
-#define LAYER_FN      5
-#define LAYER_HOTKEY  6
-#define LAYER_MOUSE   7
-#define LAYER_SNIPE   8
-#define LAYER_SCROLL  9
+#ifndef LAYERS
+#define LAYERS
+
+#define LAYER_DVORAK        0
+#define LAYER_QWERTY        1
+#define LAYER_SPEC          2
+#define LAYER_NUMBER        3
+#define LAYER_NAV_LINUX     4
+#define LAYER_NAV_MACOS     5
+#define LAYER_NAV           6
+#define LAYER_FN            7
+#define LAYER_HOTKEY        8
+#define LAYER_MOUSE         9
+#define LAYER_SNIPE         10
+#define LAYER_SCROLL        11
+#define LAYER_MACOS         12
+
+#endif
 
 
 &default_transform {
