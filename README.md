@@ -38,9 +38,9 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
 - [x] Add PrintScreen
 - [x] Add MB1 and MB2 to hold left and right from scroll hold
 - [x] Add caps word
+- [x] Redesign specials so that "+" and "_" don't require shift
 - [ ] Hotkeys and improved navigation
     - [x] add volume and brightness controls to hotkey layer
-    - [ ] add suspend button to hotkey layer
     - [ ] add cut/copy/paste to hotkey layer and a mod for macos
     - [ ] add text navigation to nav layer: jump word, home/end - and a mod for macos
     - [ ] add delete word mod that works same on macos and linux

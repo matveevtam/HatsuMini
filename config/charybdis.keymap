@@ -523,9 +523,9 @@
         layer_special {
             label = "Special";
             bindings = <
-                &none     MO_FN LR_SPC      MO_SPC LR_SPC     MO_NAV LR_SPC     &none     &none            &none    &kp AMPS        &kp ASTRK       &kp EQUAL        &kp MINUS        &none
-                &trans    MO_HOT LR_SPC     MO_NUM LR_SPC     MO_MOU LR_SPC     &none     &none            &none    HMB1 DLLR       LT_SCR PRCNT    HMB2 CARET       &kp BACKSLASH    &none
-                &trans    &trans            &trans            &trans            &trans    &none            &none    HMR_CTR EXCL    HMR_CMD AT      HMR_ALT HASH     HMR_SHF SLASH    &none
+                &none     MO_FN LR_SPC      MO_SPC LR_SPC     MO_NAV LR_SPC     &none     &none            &none    &kp AMPS        &kp ASTRK       &kp EQUAL        &kp LS(MINUS)        &kp BACKSLASH
+                &trans    MO_HOT LR_SPC     MO_NUM LR_SPC     MO_MOU LR_SPC     &none     &none            &none    HMB1 DLLR       LT_SCR PRCNT    HMB2 CARET       &kp LS(EQUAL)        &kp MINUS
+                &trans    &trans            &trans            &trans            &trans    &none            &none    HMR_CTR EXCL    HMR_CMD AT      HMR_ALT HASH     HMR_SHF LS(SLASH)    &kp SLASH
 
                                                                      &trans    &trans    &trans            &trans    &trans
             >;
