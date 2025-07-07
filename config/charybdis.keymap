@@ -8,8 +8,8 @@
 #define LAYERS
 
 #define LAYER_DVORAK        0
-#define LAYER_QWERTY        1
-#define LAYER_MACOS         2
+#define LAYER_MACOS         1
+#define LAYER_QWERTY        2
 #define LAYER_SPEC          3
 #define LAYER_NUMBER        4
 #define LAYER_NAV_LINUX     5
@@ -617,17 +617,6 @@
                                                             &kp TAB    &kp SPACE    &kp ENTER            &mkp MB2    &mkp MB1
             >;
         };
-
-        layer_qwerty {
-            label = "Qwerty";
-            bindings = <
-                &kp GRAVE    LLT_FN Q     LLT_SPC W     LLT_NAV E    &kp R        &kp T            &kp Y    &kp U        &kp I            &kp O          &kp P            &kp LEFT_BRACKET
-                &trans       LLT_HOT A    LLT_NUM S     LLT_MOU D    &kp F        &kp G            &kp H    HMB1 J       LT_SCR K         HMB2 L         &kp SEMICOLON    &kp APOS
-                &trans       HML_SHF Z    HML_ALT X     HML_CMD C    HML_CTR V    &kp B            &kp N    HMR_CTR M    HMR_CMD COMMA    HMR_ALT DOT    HMR_SHF SLASH    &kp MINUS
-
-                                                             &trans    &trans    &trans            &trans    &trans
-            >;
-        };
         
         layer_macos {
             label = "MacOS";
@@ -637,6 +626,17 @@
                 &macos_del    &trans    &trans    &trans    &trans    &trans            &trans    &trans    &trans    &trans    &trans    &trans
                                                                     
                                                   &trans    &trans    &trans            &trans    &trans
+            >;
+        };
+
+        layer_qwerty {
+            label = "Qwerty";
+            bindings = <
+                &kp GRAVE    LLT_FN Q     LLT_SPC W     LLT_NAV E    &kp R        &kp T            &kp Y    &kp U        &kp I            &kp O          &kp P            &kp LEFT_BRACKET
+                &trans       LLT_HOT A    LLT_NUM S     LLT_MOU D    &kp F        &kp G            &kp H    HMB1 J       LT_SCR K         HMB2 L         &kp SEMICOLON    &kp APOS
+                &trans       HML_SHF Z    HML_ALT X     HML_CMD C    HML_CTR V    &kp B            &kp N    HMR_CTR M    HMR_CMD COMMA    HMR_ALT DOT    HMR_SHF SLASH    &kp MINUS
+
+                                                             &trans    &trans    &trans            &trans    &trans
             >;
         };
 
@@ -676,7 +676,7 @@
         layer_nav_macos {
             label = "Navigation MacOS";
             bindings = <
-                &none     &none     &none     &none     &none     &none            &none           &kp LC(LEFT)     &none    &kp LC(RIGHT)     &none            &kp M
+                &none     &none     &none     &none     &none     &none            &none           &none            &none    &none             &none            &kp M
                 &trans    &none     &none     &none     &none     &none            &none           HMB1 LA(LEFT)    &none    HMB2 LA(RIGHT)    &none            &none
                 &trans    &trans    &trans    &trans    &trans    &none            &kp LG(LEFT)    &none            &none    &none             &kp LG(RIGHT)    &none
 
@@ -720,9 +720,9 @@
         layer_hotkey_macos {
             label = "Hotkey MacOS";
             bindings = <
-                &none     &none     &none     &none     &none     &none            &none    &none            &none                &none        &none     &none
-                &trans    &none     &none     &none     &none     &none            &none    &kp LG(X)        LT_SCR LG(C)         &kp LG(V)    &none     &none
-                &trans    &trans    &trans    &trans    &trans    &none            &none    HMR_CTR LG(Z)    HMR_CMD LG(LS(Z))    &trans       &trans    &none
+                &none     &none     &none     &none     &none     &none            &none    &none            &none                &none                  &none               &none
+                &trans    &none     &none     &none     &none     &none            &none    &kp LG(X)        LT_SCR LG(C)         &kp LG(V)              &none               &none
+                &trans    &trans    &trans    &trans    &trans    &none            &none    HMR_CTR LG(Z)    HMR_CMD LG(LS(Z))    HMR_ALT LC(LEFT)       HMR_SHF LC(RIGHT)   &none
                                                                     
                                              &trans    &trans    &trans            &trans    &trans
             >;
