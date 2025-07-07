@@ -16,10 +16,12 @@
 #define LAYER_NAV_MACOS     6
 #define LAYER_NAV           7
 #define LAYER_FN            8
-#define LAYER_HOTKEY        9
-#define LAYER_MOUSE         10
-#define LAYER_SNIPE         11
-#define LAYER_SCROLL        12
+#define LAYER_HOTKEY_LINUX  9
+#define LAYER_HOTKEY_MACOS  10
+#define LAYER_HOTKEY        11
+#define LAYER_MOUSE         12
+#define LAYER_SNIPE         13
+#define LAYER_SCROLL        14
 
 #endif
 
@@ -52,6 +54,8 @@
     LAYER_NAV_MACOS \
     LAYER_NAV \
     LAYER_FN \
+    LAYER_HOTKEY_LINUX \
+    LAYER_HOTKEY_MACOS \
     LAYER_HOTKEY \
     LAYER_MOUSE \
     LAYER_SNIPE \
@@ -69,6 +73,8 @@
     <&macro_tap &tog_off LAYER_NAV_MACOS>, \
     <&macro_tap &tog_off LAYER_NAV>, \
     <&macro_tap &tog_off LAYER_FN>, \
+    <&macro_tap &tog_off LAYER_HOTKEY_LINUX>, \
+    <&macro_tap &tog_off LAYER_HOTKEY_MACOS>, \
     <&macro_tap &tog_off LAYER_HOTKEY>, \
     <&macro_tap &tog_off LAYER_MOUSE>, \
     <&macro_tap &tog_off LAYER_SNIPE>, \
@@ -79,8 +85,6 @@
 #define LR_SPC LAYER_SPEC
 #define LR_NUM LAYER_NUMBER
 #define LR_NAV LAYER_NAV
-#define LR_NVL LAYER_NAV_LINUX
-#define LR_NVM LAYER_NAV_MACOS
 #define LR_FN  LAYER_FN
 #define LR_HOT LAYER_HOTKEY
 #define LR_MOU LAYER_MOUSE
@@ -131,7 +135,7 @@
 #define HMB2 &hmtk MB2
 
 &caps_word {
-    continue-list = <UNDERSCORE MINUS>;
+    continue-list = <UNDERSCORE MINUS BSPC DEL>;
 };
 
 / {
@@ -146,6 +150,16 @@
         conditional_nav_macos_layer {
             if-layers = <LAYER_NAV LAYER_MACOS>;
             then-layer = <LAYER_NAV_MACOS>;
+        };
+
+        conditional_hotkey_linux_layer {
+            if-layers = <LAYER_HOTKEY>;
+            then-layer = <LAYER_HOTKEY_LINUX>;
+        };
+
+        conditional_hotkey_macos_layer {
+            if-layers = <LAYER_HOTKEY LAYER_MACOS>;
+            then-layer = <LAYER_HOTKEY_MACOS>;
         };
     };
     
@@ -692,12 +706,34 @@
             >;
         };
         
+        layer_hotkey_linux {
+            label = "Hotkey Linux";
+            bindings = <
+                &none     &none     &none     &none     &none     &none            &none    &none            &none                &none        &none     &none
+                &trans    &none     &none     &none     &none     &none            &none    &kp LC(X)        LT_SCR LC(C)         &kp LC(V)    &none     &none
+                &trans    &trans    &trans    &trans    &trans    &none            &none    HMR_CTR LC(Z)    HMR_CMD LC(LS(Z))    &trans       &trans    &none
+                                                                    
+                                             &trans    &trans    &trans            &trans    &trans
+            >;
+        };
+        
+        layer_hotkey_macos {
+            label = "Hotkey MacOS";
+            bindings = <
+                &none     &none     &none     &none     &none     &none            &none    &none            &none                &none        &none     &none
+                &trans    &none     &none     &none     &none     &none            &none    &kp LG(X)        LT_SCR LG(C)         &kp LG(V)    &none     &none
+                &trans    &trans    &trans    &trans    &trans    &none            &none    HMR_CTR LG(Z)    HMR_CMD LG(LS(Z))    &trans       &trans    &none
+                                                                    
+                                             &trans    &trans    &trans            &trans    &trans
+            >;
+        };
+        
         layer_hotkey {
             label = "Hotkey";
             bindings = <
-                &none     MO_FN LR_HOT      MO_SPC LR_HOT     MO_NAV LR_HOT     &none     &none            &none    &none     &none             &none     &none     &kp C_MUTE
-                &trans    MO_HOT LR_HOT     MO_NUM LR_HOT     MO_MOU LR_HOT     &none     &none            &none    &none     MO_SCR LR_HOT     &none     &none     &vb_up
-                &trans    &trans            &trans            &trans            &trans    &none            &none    &trans    &trans            &trans    &trans    &vb_dn
+                &none     MO_FN LR_HOT      MO_SPC LR_HOT     MO_NAV LR_HOT     &none     &none            &none    &none     &none     &none     &none     &kp C_MUTE
+                &trans    MO_HOT LR_HOT     MO_NUM LR_HOT     MO_MOU LR_HOT     &none     &none            &none    &trans    &trans    &trans    &none     &vb_up
+                &trans    &trans            &trans            &trans            &trans    &none            &none    &trans    &trans    &trans    &trans    &vb_dn
 
                                                                      &trans    &trans    &trans            &trans    &trans
             >;

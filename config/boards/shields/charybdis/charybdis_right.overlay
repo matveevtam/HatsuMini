@@ -18,10 +18,12 @@
 #define LAYER_NAV_MACOS     6
 #define LAYER_NAV           7
 #define LAYER_FN            8
-#define LAYER_HOTKEY        9
-#define LAYER_MOUSE         10
-#define LAYER_SNIPE         11
-#define LAYER_SCROLL        12
+#define LAYER_HOTKEY_LINUX  9
+#define LAYER_HOTKEY_MACOS  10
+#define LAYER_HOTKEY        11
+#define LAYER_MOUSE         12
+#define LAYER_SNIPE         13
+#define LAYER_SCROLL        14
 
 #endif
 

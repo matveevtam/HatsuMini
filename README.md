@@ -39,15 +39,15 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
 - [x] Add MB1 and MB2 to hold left and right from scroll hold
 - [x] Add caps word
 - [x] Redesign specials so that "+" and "_" don't require shift
-- [ ] Caps word should continue after backspase and delete
+- [x] Caps word should continue after backspase and delete
 - [ ] Hotkeys and improved navigation
     - [x] add volume and brightness controls to hotkey layer
-    - [ ] add cut/copy/paste to hotkey layer and a mod for macos
-    - [ ] add text navigation to nav layer: jump word, home/end - and a mod for macos
-    - [ ] add delete word mod that works same on macos and linux
-    - [ ] add undo/redo keys to hotkey layer and macos mod
-    - [ ] add macos workspace navigation to hotkey layer
-- [ ] Make up arrow repeatable
+    - [x] add cut/copy/paste to hotkey layer and a mod for macos
+    - [x] add text navigation to nav layer: jump word, home/end - and a mod for macos
+    - [x] add delete word mod that works same on macos and linux
+    - [x] add undo/redo keys to hotkey layer and macos mod
+    - [x] add macos workspace navigation to hotkey layer
+- [x] Make up arrow repeatable
 - [ ] Ideas for v2:
     - [ ] merge numbers and specials - using shift and putting extra specials in top row
     - [ ] merge mouse and navigation - put navigation to left hand or top row
