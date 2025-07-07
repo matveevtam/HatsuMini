@@ -27,7 +27,7 @@
 #define TYPING_LAYERS \
     LAYER_DVORAK \
     LAYER_QWERTY \
-    LAYER_MACOS \ 
+    LAYER_MACOS \
     LAYER_SPEC \
     LAYER_NUMBER \
     LAYER_NAV_LINUX \
@@ -36,7 +36,7 @@
 
 #define TYPING_LAYERS_NO_QWERTY \
     LAYER_DVORAK \
-    LAYER_MACOS \ 
+    LAYER_MACOS \
     LAYER_SPEC \
     LAYER_NUMBER \
     LAYER_NAV_LINUX \
@@ -45,7 +45,7 @@
 
 #define ALL_LAYERS_NO_QWERTY \
     LAYER_DVORAK \
-    LAYER_MACOS \ 
+    LAYER_MACOS \
     LAYER_SPEC \
     LAYER_NUMBER \
     LAYER_NAV_LINUX \
@@ -57,6 +57,22 @@
     LAYER_SNIPE \
     LAYER_SCROLL
 
+// this is needed for two reasons:
+// 1. I need to switch to lower layers, so I needed to use &to a lot
+// 2. &to turns MacOS off, so I need to turn off all layers except MacOS manually 
+#define TOG_OFF_ALL_LAYERS_NO_MACOS \
+    <&macro_tap &tog_off LAYER_DVORAK>, \
+    <&macro_tap &tog_off LAYER_QWERTY>, \
+    <&macro_tap &tog_off LAYER_SPEC>, \
+    <&macro_tap &tog_off LAYER_NUMBER>, \
+    <&macro_tap &tog_off LAYER_NAV_LINUX>, \
+    <&macro_tap &tog_off LAYER_NAV_MACOS>, \
+    <&macro_tap &tog_off LAYER_NAV>, \
+    <&macro_tap &tog_off LAYER_FN>, \
+    <&macro_tap &tog_off LAYER_HOTKEY>, \
+    <&macro_tap &tog_off LAYER_MOUSE>, \
+    <&macro_tap &tog_off LAYER_SNIPE>, \
+    <&macro_tap &tog_off LAYER_SCROLL>
 
 #define LR_DVO LAYER_DVORAK
 #define LR_QWE LAYER_QWERTY
@@ -239,13 +255,24 @@
     };
 
     macros {
+        macro_switch_layer: macro_switch_layer {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings 
+                = TOG_OFF_ALL_LAYERS_NO_MACOS
+                , <&macro_param_1to1>
+                , <&macro_tap &tog_on MACRO_PLACEHOLDER>
+                ;
+            display-name = "Switch Layer Macro";
+        };
 
         macro_switch_language: macro_switch_language {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings 
-                = <&macro_param_1to1>
-                , <&macro_tap &to MACRO_PLACEHOLDER>
+                = TOG_OFF_ALL_LAYERS_NO_MACOS
+                , <&macro_param_1to1>
+                , <&macro_tap &tog_on MACRO_PLACEHOLDER>
                 , <&macro_tap &kp LANG_TOGGLE>
                 ;
             display-name = "Switch Language Macro";
@@ -275,7 +302,8 @@
             compatible = "zmk,behavior-macro-two-param";
             #binding-cells = <2>;
             bindings 
-                = <&macro_param_2to1>
+                = TOG_OFF_ALL_LAYERS_NO_MACOS
+                , <&macro_param_2to1>
                 , <&macro_tap &tog_off MACRO_PLACEHOLDER>
                 , <&macro_param_1to1>
                 , <&macro_tap &tog_on MACRO_PLACEHOLDER>
@@ -371,73 +399,73 @@
         combo_to_dvorak_layer_lh {
             key-positions = <16 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_DVORAK>;
+            bindings = <&macro_switch_layer LAYER_DVORAK>;
         };
         combo_to_nav_layer_lh {
             key-positions = <3 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_NAV>;
+            bindings = <&macro_switch_layer LAYER_NAV>;
         };
         combo_to_mouse_layer_lh {
             key-positions = <15 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_MOUSE>;
+            bindings = <&macro_switch_layer LAYER_MOUSE>;
         };
         combo_to_spec_layer_lh {
             key-positions = <2 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_SPEC>;
+            bindings = <&macro_switch_layer LAYER_SPEC>;
         };
         combo_to_numbers_layer_lh {
             key-positions = <14 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_NUMBER>;
+            bindings = <&macro_switch_layer LAYER_NUMBER>;
         };
         combo_to_fn_layer_lh {
             key-positions = <1 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_FN>;
+            bindings = <&macro_switch_layer LAYER_FN>;
         };
         combo_to_hotkey_layer_lh {
             key-positions = <13 KEY_LMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_HOTKEY>;
+            bindings = <&macro_switch_layer LAYER_HOTKEY>;
         };
         // right hand
         combo_to_dvorak_layer_rh {
             key-positions = <19 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_DVORAK>;
+            bindings = <&macro_switch_layer LAYER_DVORAK>;
         };
         combo_to_nav_layer_rh {
             key-positions = <8 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_NAV>;
+            bindings = <&macro_switch_layer LAYER_NAV>;
         };
         combo_to_mouse_layer_rh {
             key-positions = <20 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_MOUSE>;
+            bindings = <&macro_switch_layer LAYER_MOUSE>;
         };
         combo_to_spec_layer_rh {
             key-positions = <9 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_SPEC>;
+            bindings = <&macro_switch_layer LAYER_SPEC>;
         };
         combo_to_numbers_layer_rh {
             key-positions = <21 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_NUMBER>;
+            bindings = <&macro_switch_layer LAYER_NUMBER>;
         };
         combo_to_fn_layer_rh {
             key-positions = <10 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_FN>;
+            bindings = <&macro_switch_layer LAYER_FN>;
         };
         combo_to_hotkey_layer_rh {
             key-positions = <22 KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&to LAYER_HOTKEY>;
+            bindings = <&macro_switch_layer LAYER_HOTKEY>;
         };
     // ======== Switching between regular layers ========
 
