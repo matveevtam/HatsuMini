@@ -614,7 +614,7 @@
                 &kp BSPC     LT_HOT A        LT_NUM O        LT_MOU E      &kp U        &kp I            &kp D    HMB1 H       LT_SCR T     HMB2 N       &kp S        &kp MINUS
                 &kp DEL      HML_SHF APOS    HML_ALT Q       HML_CMD J     HML_CTR K    &kp X            &kp B    HMR_CTR M    HMR_CMD W    HMR_ALT V    HMR_SHF Z    &kp SLASH
 
-                                                            &kp TAB    &kp SPACE    &kp ENTER            &mkp MB2    &mkp MB1
+                                                            &kp SPACE    &kp TAB    &kp ENTER            &mkp MB2    &mkp MB1
             >;
         };
         
