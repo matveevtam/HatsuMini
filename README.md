@@ -62,13 +62,25 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
 - [ ] try automouse layer (AML)
 
 
-### Special characters
-Numbers when cyrillic
+### Generating switching between layers
 
-!   
-"
-№
-;   have in dvorak
-%
-:   have in dvorak
-*
+```
+layers = [
+ 'LAYER_DVORAK',
+ 'LAYER_QWERTY',
+ 'LAYER_SPEC',
+ 'LAYER_NUMBER',
+ 'LAYER_NAV',
+ 'LAYER_FN',
+ 'LAYER_HOTKEY',
+ 'LAYER_MOUSE',
+ ]
+
+for layer_from in layers:
+    print(f'// from {layer_from}')
+    for layer_to in layers:
+        if layer_from == layer_to:
+            continue
+        print(f'COMBO_TO_LAYER{'_LANG' if 'QWERTY' in layer_from or 'QWERTY' in layer_to else ''}{'_MACOS' if 'DVORAK' in layer_from else ''}_RH({layer_from}, {layer_to})')
+
+```

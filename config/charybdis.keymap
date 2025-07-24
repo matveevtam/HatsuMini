@@ -120,6 +120,20 @@
         bindings = <&macro_switch_layer FROM TO>; \
     };
 
+#define COMBO_TO_LAYER_LANG_RH(FROM, TO) \
+    combo_to_ ## TO ## _from_ ## FROM ## _rh { \
+        key-positions = <KEY_ ## TO ## _RH KEY_RMOD>; \
+        layers = <FROM>; \
+        bindings = <&macro_switch_layer_lang FROM TO>; \
+    };
+
+#define COMBO_TO_LAYER_LANG_MACOS_RH(FROM, TO) \
+    combo_to_ ## TO ## _from_ ## FROM ## _rh { \
+        key-positions = <KEY_ ## TO ## _RH KEY_RMOD>; \
+        layers = <FROM LAYER_MACOS>; \
+        bindings = <&macro_switch_layer_lang FROM TO>; \
+    };
+
 
 #define KEY_LANG LA(SPACE)
 
@@ -275,6 +289,8 @@
     };
 
     macros {
+        // param1: layer_from
+        // param2: layer_to
         macro_switch_layer: macro_switch_layer {
             compatible = "zmk,behavior-macro-two-param";
             #binding-cells = <2>;
@@ -287,38 +303,26 @@
             display-name = "Switch Layer Macro";
         };
 
-        macro_switch_language: macro_switch_language {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
+        // param1: layer_from
+        // param2: layer_to
+        macro_switch_layer_lang: macro_switch_layer_lang {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
             bindings 
-                = <&macro_tap &tog_off LAYER_QWERTY>
-                , <&macro_param_1to1>
+                = <&macro_param_1to1>
+                , <&macro_tap &tog_off MACRO_PLACEHOLDER>
+                , <&macro_param_2to1>
                 , <&macro_tap &tog_on MACRO_PLACEHOLDER>
                 , <&macro_tap &kp KEY_LANG>
                 ;
-            display-name = "Switch Language Macro";
-        };
-
-        macro_switch_language_hold: macro_switch_language_hold {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings 
-                = <&macro_tap &kp KEY_LANG>
-                , <&macro_param_1to1>
-                , <&macro_press &mo MACRO_PLACEHOLDER>
-                , <&macro_pause_for_release>
-                , <&macro_param_1to1>
-                , <&macro_release &mo MACRO_PLACEHOLDER>
-                , <&macro_tap &kp KEY_LANG>
-                ;
-            display-name = "Switch Language Hold Macro";
+            display-name = "Switch Layep and Language Macro";
         };
         
-        // toggle off layer 2, toggle on layer 1
+        // toggle off layer_from, toggle on layer_to
         // wait for release
-        // toggle on layer 2, toggle off layer 1
-        // param1: layer 1
-        // param2: layer 2
+        // toggle on layer_from, toggle off layer_to
+        // param1: layer_to
+        // param2: layer_from
         exmo: macro_exclusive_mo {
             compatible = "zmk,behavior-macro-two-param";
             #binding-cells = <2>;
@@ -334,6 +338,21 @@
                 , <&macro_tap &tog_off MACRO_PLACEHOLDER>
                 ;
             display-name = "To Layer Hold Macro";
+        };
+
+        macro_switch_language_hold: macro_switch_language_hold {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings 
+                = <&macro_tap &kp KEY_LANG>
+                , <&macro_param_1to1>
+                , <&macro_tap &tog_on MACRO_PLACEHOLDER>
+                , <&macro_pause_for_release>
+                , <&macro_param_1to1>
+                , <&macro_tap &tog_off MACRO_PLACEHOLDER>
+                , <&macro_tap &kp KEY_LANG>
+                ;
+            display-name = "Switch Language Hold Macro";
         };
 
     };
@@ -414,97 +433,75 @@
         };
     // ======== Common keys ========
 
-    // ======== Switching between regular layers ========
+    // ======== Switching between layers ========
         // left hand disabled
         // right hand
+        // from LAYER_DVORAK
+        COMBO_TO_LAYER_LANG_MACOS_RH(LAYER_DVORAK, LAYER_QWERTY)
         COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_SPEC)
         COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_NUMBER)
         COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_NAV)
         COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_FN)
         COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_HOTKEY)
         COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_MOUSE)
+        // from LAYER_QWERTY
+        COMBO_TO_LAYER_LANG_RH(LAYER_QWERTY, LAYER_DVORAK)
+        COMBO_TO_LAYER_LANG_RH(LAYER_QWERTY, LAYER_SPEC)
+        COMBO_TO_LAYER_LANG_RH(LAYER_QWERTY, LAYER_NUMBER)
+        COMBO_TO_LAYER_LANG_RH(LAYER_QWERTY, LAYER_NAV)
+        COMBO_TO_LAYER_LANG_RH(LAYER_QWERTY, LAYER_FN)
+        COMBO_TO_LAYER_LANG_RH(LAYER_QWERTY, LAYER_HOTKEY)
+        COMBO_TO_LAYER_LANG_RH(LAYER_QWERTY, LAYER_MOUSE)
+        // from LAYER_SPEC
         COMBO_TO_LAYER_RH(LAYER_SPEC, LAYER_DVORAK)
+        COMBO_TO_LAYER_LANG_RH(LAYER_SPEC, LAYER_QWERTY)
         COMBO_TO_LAYER_RH(LAYER_SPEC, LAYER_NUMBER)
         COMBO_TO_LAYER_RH(LAYER_SPEC, LAYER_NAV)
         COMBO_TO_LAYER_RH(LAYER_SPEC, LAYER_FN)
         COMBO_TO_LAYER_RH(LAYER_SPEC, LAYER_HOTKEY)
         COMBO_TO_LAYER_RH(LAYER_SPEC, LAYER_MOUSE)
+        // from LAYER_NUMBER
         COMBO_TO_LAYER_RH(LAYER_NUMBER, LAYER_DVORAK)
+        COMBO_TO_LAYER_LANG_RH(LAYER_NUMBER, LAYER_QWERTY)
         COMBO_TO_LAYER_RH(LAYER_NUMBER, LAYER_SPEC)
         COMBO_TO_LAYER_RH(LAYER_NUMBER, LAYER_NAV)
         COMBO_TO_LAYER_RH(LAYER_NUMBER, LAYER_FN)
         COMBO_TO_LAYER_RH(LAYER_NUMBER, LAYER_HOTKEY)
         COMBO_TO_LAYER_RH(LAYER_NUMBER, LAYER_MOUSE)
+        // from LAYER_NAV
         COMBO_TO_LAYER_RH(LAYER_NAV, LAYER_DVORAK)
+        COMBO_TO_LAYER_LANG_RH(LAYER_NAV, LAYER_QWERTY)
         COMBO_TO_LAYER_RH(LAYER_NAV, LAYER_SPEC)
         COMBO_TO_LAYER_RH(LAYER_NAV, LAYER_NUMBER)
         COMBO_TO_LAYER_RH(LAYER_NAV, LAYER_FN)
         COMBO_TO_LAYER_RH(LAYER_NAV, LAYER_HOTKEY)
         COMBO_TO_LAYER_RH(LAYER_NAV, LAYER_MOUSE)
+        // from LAYER_FN
         COMBO_TO_LAYER_RH(LAYER_FN, LAYER_DVORAK)
+        COMBO_TO_LAYER_LANG_RH(LAYER_FN, LAYER_QWERTY)
         COMBO_TO_LAYER_RH(LAYER_FN, LAYER_SPEC)
         COMBO_TO_LAYER_RH(LAYER_FN, LAYER_NUMBER)
         COMBO_TO_LAYER_RH(LAYER_FN, LAYER_NAV)
         COMBO_TO_LAYER_RH(LAYER_FN, LAYER_HOTKEY)
         COMBO_TO_LAYER_RH(LAYER_FN, LAYER_MOUSE)
+        // from LAYER_HOTKEY
         COMBO_TO_LAYER_RH(LAYER_HOTKEY, LAYER_DVORAK)
+        COMBO_TO_LAYER_LANG_RH(LAYER_HOTKEY, LAYER_QWERTY)
         COMBO_TO_LAYER_RH(LAYER_HOTKEY, LAYER_SPEC)
         COMBO_TO_LAYER_RH(LAYER_HOTKEY, LAYER_NUMBER)
         COMBO_TO_LAYER_RH(LAYER_HOTKEY, LAYER_NAV)
         COMBO_TO_LAYER_RH(LAYER_HOTKEY, LAYER_FN)
         COMBO_TO_LAYER_RH(LAYER_HOTKEY, LAYER_MOUSE)
+        // from LAYER_MOUSE
         COMBO_TO_LAYER_RH(LAYER_MOUSE, LAYER_DVORAK)
+        COMBO_TO_LAYER_LANG_RH(LAYER_MOUSE, LAYER_QWERTY)
         COMBO_TO_LAYER_RH(LAYER_MOUSE, LAYER_SPEC)
         COMBO_TO_LAYER_RH(LAYER_MOUSE, LAYER_NUMBER)
         COMBO_TO_LAYER_RH(LAYER_MOUSE, LAYER_NAV)
         COMBO_TO_LAYER_RH(LAYER_MOUSE, LAYER_FN)
         COMBO_TO_LAYER_RH(LAYER_MOUSE, LAYER_HOTKEY)
-    // ======== Switching between regular layers ========
 
-    // ======== Switching to and from Cyrillic layer ========
-        // left hand disabled
-        // right hand
-        combo_cyrillic_to_qwerty_layer_rh {
-            key-positions = <KEY_LAYER_QWERTY_RH KEY_RMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_language LAYER_QWERTY>;
-        };
-        combo_cyrillic_to_dvorak_layer_rh {
-            key-positions = <KEY_LAYER_DVORAK_RH KEY_RMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_DVORAK>;
-        };
-        combo_cyrillic_to_nav_layer_rh {
-            key-positions = <KEY_LAYER_NAV_RH KEY_RMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_NAV>;
-        };
-        combo_cyrillic_to_mouse_layer_rh {
-            key-positions = <KEY_LAYER_MOUSE_RH KEY_RMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_MOUSE>;
-        };
-        combo_cyrillic_to_spec_layer_rh {
-            key-positions = <KEY_LAYER_SPEC_RH KEY_RMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_SPEC>;
-        };
-        combo_cyrillic_to_numbers_layer_rh {
-            key-positions = <KEY_LAYER_NUMBER_RH KEY_RMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_NUMBER>;
-        };
-        combo_cyrillic_to_fn_layer_rh {
-            key-positions = <KEY_LAYER_FN_RH KEY_RMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_FN>;
-        };
-        combo_cyrillic_to_hotkey_layer_rh {
-            key-positions = <KEY_LAYER_HOTKEY_RH KEY_RMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_HOTKEY>;
-        };
-    // ======== Switching to and from Cyrillic layer ========
+    // ======== Switching between layers ========
 
     // ======== Cyrillic missing characters and specials ========
         combo_cyrillic_colon {
@@ -529,7 +526,7 @@
         };
     // ======== Cyrillic missing characters and specials ========
 
-    // ======== Toggle MacOS Layer ========
+    // ======== Toggle MacOS Layer and resetting active layers ========
         // left hand disabled
         // right hand
         combo_macos_off_rh {
@@ -540,7 +537,7 @@
             key-positions = <18 KEY_RMOD>;
             bindings = <&to LAYER_MACOS>;
         };
-    // ======== Toggle MacOS Layer ========
+    // ======== Toggle MacOS Layer and resetting active layers ========
         
     };
 
@@ -606,7 +603,7 @@
             label = "Navigation Linux";
             bindings = <
                 &none     &none     &none     &none     &none     &none            &none       &none            &none    &none             &none      &kp L
-                &trans    &none     &none     &none     &none     &none            &none       HMB1 LC(LEFT)    &none    HMB2 LC(RIGHT)    &none      &none
+                &trans    &none     &none     &none     &none     &none            &none       &kp LC(LEFT)     &none    &kp LC(RIGHT)     &none      &none
                 &trans    &trans    &trans    &trans    &trans    &none            &kp HOME    &none            &none    &none             &kp END    &none
 
                                              &trans    &trans    &trans            &trans        &trans
@@ -617,7 +614,7 @@
             label = "Navigation MacOS";
             bindings = <
                 &none     &none     &none     &none     &none     &none            &none           &none            &none    &none             &none            &kp M
-                &trans    &none     &none     &none     &none     &none            &none           HMB1 LA(LEFT)    &none    HMB2 LA(RIGHT)    &none            &none
+                &trans    &none     &none     &none     &none     &none            &none           &kp LA(LEFT)     &none    &kp LA(RIGHT)     &none            &none
                 &trans    &trans    &trans    &trans    &trans    &none            &kp LG(LEFT)    &none            &none    &none             &kp LG(RIGHT)    &none
 
                                              &trans    &trans    &trans            &trans        &trans
