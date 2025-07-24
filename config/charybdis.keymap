@@ -26,14 +26,30 @@
 #endif
 
 
+#define KEY_LAYER_DVORAK_RH 19
+#define KEY_LAYER_DVORAK_LH 16
+#define KEY_LAYER_QWERTY_RH 7
+#define KEY_LAYER_QWERTY_LH 4
+#define KEY_LAYER_SPEC_RH 9
+#define KEY_LAYER_SPEC_LH 2
+#define KEY_LAYER_NUMBER_RH 21
+#define KEY_LAYER_NUMBER_LH 14
+#define KEY_LAYER_NAV_RH 8
+#define KEY_LAYER_NAV_LH 3
+#define KEY_LAYER_FN_RH 10
+#define KEY_LAYER_FN_LH 1
+#define KEY_LAYER_HOTKEY_RH 22
+#define KEY_LAYER_HOTKEY_LH 13
+#define KEY_LAYER_MOUSE_RH 20
+#define KEY_LAYER_MOUSE_LH 15
+
+
 #define TYPING_LAYERS \
     LAYER_DVORAK \
     LAYER_QWERTY \
     LAYER_MACOS \
     LAYER_SPEC \
     LAYER_NUMBER \
-    LAYER_NAV_LINUX \
-    LAYER_NAV_MACOS \
     LAYER_NAV
 
 #define TYPING_LAYERS_NO_QWERTY \
@@ -41,8 +57,6 @@
     LAYER_MACOS \
     LAYER_SPEC \
     LAYER_NUMBER \
-    LAYER_NAV_LINUX \
-    LAYER_NAV_MACOS \
     LAYER_NAV
 
 #define ALL_LAYERS_NO_QWERTY \
@@ -50,35 +64,12 @@
     LAYER_MACOS \
     LAYER_SPEC \
     LAYER_NUMBER \
-    LAYER_NAV_LINUX \
-    LAYER_NAV_MACOS \
     LAYER_NAV \
     LAYER_FN \
-    LAYER_HOTKEY_LINUX \
-    LAYER_HOTKEY_MACOS \
     LAYER_HOTKEY \
     LAYER_MOUSE \
     LAYER_SNIPE \
     LAYER_SCROLL
-
-// this is needed for two reasons:
-// 1. I need to switch to lower layers, so I needed to use &to a lot
-// 2. &to turns MacOS off, so I need to turn off all layers except MacOS manually 
-#define TOG_OFF_ALL_LAYERS_NO_MACOS \
-    <&macro_tap &tog_off LAYER_DVORAK>, \
-    <&macro_tap &tog_off LAYER_QWERTY>, \
-    <&macro_tap &tog_off LAYER_SPEC>, \
-    <&macro_tap &tog_off LAYER_NUMBER>, \
-    <&macro_tap &tog_off LAYER_NAV_LINUX>, \
-    <&macro_tap &tog_off LAYER_NAV_MACOS>, \
-    <&macro_tap &tog_off LAYER_NAV>, \
-    <&macro_tap &tog_off LAYER_FN>, \
-    <&macro_tap &tog_off LAYER_HOTKEY_LINUX>, \
-    <&macro_tap &tog_off LAYER_HOTKEY_MACOS>, \
-    <&macro_tap &tog_off LAYER_HOTKEY>, \
-    <&macro_tap &tog_off LAYER_MOUSE>, \
-    <&macro_tap &tog_off LAYER_SNIPE>, \
-    <&macro_tap &tog_off LAYER_SCROLL>
 
 #define LR_DVO LAYER_DVORAK
 #define LR_QWE LAYER_QWERTY
@@ -115,7 +106,22 @@
 #define MO_HOT      &exmo   LAYER_HOTKEY
 
 
-#define LANG_TOGGLE LA(SPACE)
+#define COMBO_TO_LAYER_RH(FROM, TO) \
+    combo_to_ ## TO ## _from_ ## FROM ## _rh { \
+        key-positions = <KEY_ ## TO ## _RH KEY_RMOD>; \
+        layers = <FROM>; \
+        bindings = <&macro_switch_layer FROM TO>; \
+    };
+
+#define COMBO_TO_LAYER_MACOS_RH(FROM, TO) \
+    combo_to_ ## TO ## _from_ ## FROM ## _rh { \
+        key-positions = <KEY_ ## TO ## _RH KEY_RMOD>; \
+        layers = <FROM LAYER_MACOS>; \
+        bindings = <&macro_switch_layer FROM TO>; \
+    };
+
+
+#define KEY_LANG LA(SPACE)
 
 
 #define KEY_LMOD 36
@@ -214,10 +220,10 @@
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <
-                           6  7  8  9  10 11
-                           18 19 20 21 22 23
-                           30 31 32 33 34 35
-                36 37 38   39 40
+            0                6  7  8  9  10 11
+            12               18 19 20 21 22 23
+            24               30 31 32 33 34 35
+                  36 37 38   39 40
             >;
             hold-trigger-on-release;
         };
@@ -270,11 +276,12 @@
 
     macros {
         macro_switch_layer: macro_switch_layer {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
             bindings 
-                = TOG_OFF_ALL_LAYERS_NO_MACOS
-                , <&macro_param_1to1>
+                = <&macro_param_1to1>
+                , <&macro_tap &tog_off MACRO_PLACEHOLDER>
+                , <&macro_param_2to1>
                 , <&macro_tap &tog_on MACRO_PLACEHOLDER>
                 ;
             display-name = "Switch Layer Macro";
@@ -284,10 +291,10 @@
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings 
-                = TOG_OFF_ALL_LAYERS_NO_MACOS
+                = <&macro_tap &tog_off LAYER_QWERTY>
                 , <&macro_param_1to1>
                 , <&macro_tap &tog_on MACRO_PLACEHOLDER>
-                , <&macro_tap &kp LANG_TOGGLE>
+                , <&macro_tap &kp KEY_LANG>
                 ;
             display-name = "Switch Language Macro";
         };
@@ -296,13 +303,13 @@
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings 
-                = <&macro_tap &kp LANG_TOGGLE>
+                = <&macro_tap &kp KEY_LANG>
                 , <&macro_param_1to1>
                 , <&macro_press &mo MACRO_PLACEHOLDER>
                 , <&macro_pause_for_release>
                 , <&macro_param_1to1>
                 , <&macro_release &mo MACRO_PLACEHOLDER>
-                , <&macro_tap &kp LANG_TOGGLE>
+                , <&macro_tap &kp KEY_LANG>
                 ;
             display-name = "Switch Language Hold Macro";
         };
@@ -316,8 +323,7 @@
             compatible = "zmk,behavior-macro-two-param";
             #binding-cells = <2>;
             bindings 
-                = TOG_OFF_ALL_LAYERS_NO_MACOS
-                , <&macro_param_2to1>
+                = <&macro_param_2to1>
                 , <&macro_tap &tog_off MACRO_PLACEHOLDER>
                 , <&macro_param_1to1>
                 , <&macro_tap &tog_on MACRO_PLACEHOLDER>
@@ -409,160 +415,92 @@
     // ======== Common keys ========
 
     // ======== Switching between regular layers ========
-        // left hand
-        combo_to_dvorak_layer_lh {
-            key-positions = <16 KEY_LMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_DVORAK>;
-        };
-        combo_to_nav_layer_lh {
-            key-positions = <3 KEY_LMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_NAV>;
-        };
-        combo_to_mouse_layer_lh {
-            key-positions = <15 KEY_LMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_MOUSE>;
-        };
-        combo_to_spec_layer_lh {
-            key-positions = <2 KEY_LMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_SPEC>;
-        };
-        combo_to_numbers_layer_lh {
-            key-positions = <14 KEY_LMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_NUMBER>;
-        };
-        combo_to_fn_layer_lh {
-            key-positions = <1 KEY_LMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_FN>;
-        };
-        combo_to_hotkey_layer_lh {
-            key-positions = <13 KEY_LMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_HOTKEY>;
-        };
+        // left hand disabled
         // right hand
-        combo_to_dvorak_layer_rh {
-            key-positions = <19 KEY_RMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_DVORAK>;
-        };
-        combo_to_nav_layer_rh {
-            key-positions = <8 KEY_RMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_NAV>;
-        };
-        combo_to_mouse_layer_rh {
-            key-positions = <20 KEY_RMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_MOUSE>;
-        };
-        combo_to_spec_layer_rh {
-            key-positions = <9 KEY_RMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_SPEC>;
-        };
-        combo_to_numbers_layer_rh {
-            key-positions = <21 KEY_RMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_NUMBER>;
-        };
-        combo_to_fn_layer_rh {
-            key-positions = <10 KEY_RMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_FN>;
-        };
-        combo_to_hotkey_layer_rh {
-            key-positions = <22 KEY_RMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_layer LAYER_HOTKEY>;
-        };
+        COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_SPEC)
+        COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_NUMBER)
+        COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_NAV)
+        COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_FN)
+        COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_HOTKEY)
+        COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_MOUSE)
+        COMBO_TO_LAYER_RH(LAYER_SPEC, LAYER_DVORAK)
+        COMBO_TO_LAYER_RH(LAYER_SPEC, LAYER_NUMBER)
+        COMBO_TO_LAYER_RH(LAYER_SPEC, LAYER_NAV)
+        COMBO_TO_LAYER_RH(LAYER_SPEC, LAYER_FN)
+        COMBO_TO_LAYER_RH(LAYER_SPEC, LAYER_HOTKEY)
+        COMBO_TO_LAYER_RH(LAYER_SPEC, LAYER_MOUSE)
+        COMBO_TO_LAYER_RH(LAYER_NUMBER, LAYER_DVORAK)
+        COMBO_TO_LAYER_RH(LAYER_NUMBER, LAYER_SPEC)
+        COMBO_TO_LAYER_RH(LAYER_NUMBER, LAYER_NAV)
+        COMBO_TO_LAYER_RH(LAYER_NUMBER, LAYER_FN)
+        COMBO_TO_LAYER_RH(LAYER_NUMBER, LAYER_HOTKEY)
+        COMBO_TO_LAYER_RH(LAYER_NUMBER, LAYER_MOUSE)
+        COMBO_TO_LAYER_RH(LAYER_NAV, LAYER_DVORAK)
+        COMBO_TO_LAYER_RH(LAYER_NAV, LAYER_SPEC)
+        COMBO_TO_LAYER_RH(LAYER_NAV, LAYER_NUMBER)
+        COMBO_TO_LAYER_RH(LAYER_NAV, LAYER_FN)
+        COMBO_TO_LAYER_RH(LAYER_NAV, LAYER_HOTKEY)
+        COMBO_TO_LAYER_RH(LAYER_NAV, LAYER_MOUSE)
+        COMBO_TO_LAYER_RH(LAYER_FN, LAYER_DVORAK)
+        COMBO_TO_LAYER_RH(LAYER_FN, LAYER_SPEC)
+        COMBO_TO_LAYER_RH(LAYER_FN, LAYER_NUMBER)
+        COMBO_TO_LAYER_RH(LAYER_FN, LAYER_NAV)
+        COMBO_TO_LAYER_RH(LAYER_FN, LAYER_HOTKEY)
+        COMBO_TO_LAYER_RH(LAYER_FN, LAYER_MOUSE)
+        COMBO_TO_LAYER_RH(LAYER_HOTKEY, LAYER_DVORAK)
+        COMBO_TO_LAYER_RH(LAYER_HOTKEY, LAYER_SPEC)
+        COMBO_TO_LAYER_RH(LAYER_HOTKEY, LAYER_NUMBER)
+        COMBO_TO_LAYER_RH(LAYER_HOTKEY, LAYER_NAV)
+        COMBO_TO_LAYER_RH(LAYER_HOTKEY, LAYER_FN)
+        COMBO_TO_LAYER_RH(LAYER_HOTKEY, LAYER_MOUSE)
+        COMBO_TO_LAYER_RH(LAYER_MOUSE, LAYER_DVORAK)
+        COMBO_TO_LAYER_RH(LAYER_MOUSE, LAYER_SPEC)
+        COMBO_TO_LAYER_RH(LAYER_MOUSE, LAYER_NUMBER)
+        COMBO_TO_LAYER_RH(LAYER_MOUSE, LAYER_NAV)
+        COMBO_TO_LAYER_RH(LAYER_MOUSE, LAYER_FN)
+        COMBO_TO_LAYER_RH(LAYER_MOUSE, LAYER_HOTKEY)
     // ======== Switching between regular layers ========
 
     // ======== Switching to and from Cyrillic layer ========
-        // left hand
-        combo_cyrillic_to_qwerty_layer_lh {
-            key-positions = <4 KEY_LMOD>;
-            layers = <ALL_LAYERS_NO_QWERTY>;
-            bindings = <&macro_switch_language LAYER_QWERTY>;
-        };
-        combo_cyrillic_to_dvorak_layer_lh {
-            key-positions = <16 KEY_LMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_DVORAK>;
-        };
-        combo_cyrillic_to_nav_layer_lh {
-            key-positions = <3 KEY_LMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_NAV>;
-        };
-        combo_cyrillic_to_mouse_layer_lh {
-            key-positions = <15 KEY_LMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_MOUSE>;
-        };
-        combo_cyrillic_to_spec_layer_lh {
-            key-positions = <2 KEY_LMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_SPEC>;
-        };
-        combo_cyrillic_to_numbers_layer_lh {
-            key-positions = <14 KEY_LMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_NUMBER>;
-        };
-        combo_cyrillic_to_fn_layer_lh {
-            key-positions = <1 KEY_LMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_FN>;
-        };
-        combo_cyrillic_to_hotkey_layer_lh {
-            key-positions = <13 KEY_LMOD>;
-            layers = <LAYER_QWERTY>;
-            bindings = <&macro_switch_language LAYER_HOTKEY>;
-        };
+        // left hand disabled
         // right hand
         combo_cyrillic_to_qwerty_layer_rh {
-            key-positions = <7 KEY_RMOD>;
+            key-positions = <KEY_LAYER_QWERTY_RH KEY_RMOD>;
             layers = <ALL_LAYERS_NO_QWERTY>;
             bindings = <&macro_switch_language LAYER_QWERTY>;
         };
         combo_cyrillic_to_dvorak_layer_rh {
-            key-positions = <19 KEY_RMOD>;
+            key-positions = <KEY_LAYER_DVORAK_RH KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_DVORAK>;
         };
         combo_cyrillic_to_nav_layer_rh {
-            key-positions = <8 KEY_RMOD>;
+            key-positions = <KEY_LAYER_NAV_RH KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_NAV>;
         };
         combo_cyrillic_to_mouse_layer_rh {
-            key-positions = <20 KEY_RMOD>;
+            key-positions = <KEY_LAYER_MOUSE_RH KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_MOUSE>;
         };
         combo_cyrillic_to_spec_layer_rh {
-            key-positions = <9 KEY_RMOD>;
+            key-positions = <KEY_LAYER_SPEC_RH KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_SPEC>;
         };
         combo_cyrillic_to_numbers_layer_rh {
-            key-positions = <21 KEY_RMOD>;
+            key-positions = <KEY_LAYER_NUMBER_RH KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_NUMBER>;
         };
         combo_cyrillic_to_fn_layer_rh {
-            key-positions = <10 KEY_RMOD>;
+            key-positions = <KEY_LAYER_FN_RH KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_FN>;
         };
         combo_cyrillic_to_hotkey_layer_rh {
-            key-positions = <22 KEY_RMOD>;
+            key-positions = <KEY_LAYER_HOTKEY_RH KEY_RMOD>;
             layers = <LAYER_QWERTY>;
             bindings = <&macro_switch_language LAYER_HOTKEY>;
         };
@@ -592,13 +530,15 @@
     // ======== Cyrillic missing characters and specials ========
 
     // ======== Toggle MacOS Layer ========
-        combo_macos_off {
-            key-positions = <5 KEY_LMOD>;
-            bindings = <&tog_off LAYER_MACOS>;
+        // left hand disabled
+        // right hand
+        combo_macos_off_rh {
+            key-positions = <6 KEY_RMOD>;
+            bindings = <&to LAYER_DVORAK>;
         };
-        combo_macos_on {
-            key-positions = <17 KEY_LMOD>;
-            bindings = <&tog_on LAYER_MACOS>;
+        combo_macos_on_rh {
+            key-positions = <18 KEY_RMOD>;
+            bindings = <&to LAYER_MACOS>;
         };
     // ======== Toggle MacOS Layer ========
         

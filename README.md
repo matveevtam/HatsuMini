@@ -48,7 +48,7 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [x] add undo/redo keys to hotkey layer and macos mod
     - [x] add macos workspace navigation to hotkey layer
 - [x] Make up arrow repeatable
-- [ ] Try to optimize layer toggle
+- [x] Try to optimize layer toggle
 - [ ] Ideas for v2:
     - [ ] merge numbers and specials - using shift and putting extra specials in top row
     - [ ] merge mouse and navigation - put navigation to left hand or top row
