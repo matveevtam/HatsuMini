@@ -40,7 +40,7 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
 - [x] Add caps word
 - [x] Redesign specials so that "+" and "_" don't require shift
 - [x] Caps word should continue after backspase and delete
-- [ ] Hotkeys and improved navigation
+- [x] Hotkeys and improved navigation
     - [x] add volume and brightness controls to hotkey layer
     - [x] add cut/copy/paste to hotkey layer and a mod for macos
     - [x] add text navigation to nav layer: jump word, home/end - and a mod for macos
@@ -49,13 +49,13 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [x] add macos workspace navigation to hotkey layer
 - [x] Make up arrow repeatable
 - [x] Try to optimize layer toggle
+- [ ] Fixes:
+    - [x] when trying to switch to a layer that's already active, do nothing
 - [ ] Ideas for v2:
     - [ ] merge numbers and specials - using shift and putting extra specials in top row
     - [ ] merge mouse and navigation - put navigation to left hand or top row
     - [ ] move home row mods to middle row and put all layer switching to one bottom row
     - [ ] add sticky mods: press KEY_LMOD+mod to make it sticky, then something else to unstick it
-    - [ ] add macos navigation layer: jump word, home/end
-- [ ] Add something to Hotkey Layer and assign switching to it
 - [ ] Try adding auto-scroll: press to start scrolling, press again to stop - look at Key Repeat behavior
 - [ ] try snipe layer
 - [ ] Try changing scroll speed
