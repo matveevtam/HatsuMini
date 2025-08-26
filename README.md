@@ -51,6 +51,7 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
 - [x] Try to optimize layer toggle
 - [ ] Fixes:
     - [x] when trying to switch to a layer that's already active, do nothing
+    - [ ] add single and double quotes to Cyrillic
 - [ ] Ideas for v2:
     - [ ] merge numbers and specials - using shift and putting extra specials in top row
     - [ ] merge mouse and navigation - put navigation to left hand or top row

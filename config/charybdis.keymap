@@ -149,7 +149,7 @@
     };
 
 
-#define KEY_LANG CAPSLOCK
+#define KEY_LANG LA(SPACE)
 
 
 #define KEY_LMOD 36
