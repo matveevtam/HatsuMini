@@ -57,7 +57,7 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [ ] add cmd+scroll/ctrl+scroll for macos/linux
     - [ ] add delete to the beginning and end of line for linux
     - [x] add macos screenshot hotkey
-    - [ ] add "save" hotkey
+    - [x] add "save" hotkey
     - [ ] fix numerics two rightmost columns: */ +- .:
     - [ ] update cheatsheet
 - [ ] try snipe layer
