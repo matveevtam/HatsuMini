@@ -431,6 +431,60 @@
             display-name = "Private email macro";
         };
 
+        dlb_l: macro_delete_line_backw_linux {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings 
+                = <&macro_tap &kp LS(HOME) &kp DEL>
+                ;
+            display-name = "Delete to the beginning of line on Linux macro";
+        };
+
+        dlf_l: macro_delete_line_forw_linux {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings 
+                = <&macro_tap &kp LS(END) &kp DEL>
+                ;
+            display-name = "Delete to the end of line on Linux macro";
+        };
+
+        dl_l: macro_delete_whole_line_linux {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings 
+                = <&macro_tap &kp HOME &kp LS(END) &kp DEL>
+                ;
+            display-name = "Delete whole line on Linux macro";
+        };
+
+        dlb_m: macro_delete_line_backw_macos {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings 
+                = <&macro_tap &kp LG(BSPC)>
+                ;
+            display-name = "Delete to the beginning of line on Macos macro";
+        };
+
+        dlf_m: macro_delete_line_forw_macos {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings 
+                = <&macro_tap &kp LG(DEL)>
+                ;
+            display-name = "Delete to the end of line on Macos macro";
+        };
+
+        dl_m: macro_delete_whole_line_macos {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings 
+                = <&macro_tap &kp LG(LEFT) &kp LS(LG(RIGHT)) &kp DEL>
+                ;
+            display-name = "Delete whole line on Macos macro";
+        };
+
     };
 
     /*
@@ -697,7 +751,7 @@
         layer_nav_linux {
             label = "Navigation Linux";
             bindings = <
-                &none     &none     &none     &none     &none     &none            &none       &none            &none    &none             &none      &kp L
+                &none     &none     &none     &none     &none     &none            &none       &dlb_l           &dl_l    &dlf_l            &none      &kp L
                 &trans    &none     &none     &none     &none     &none            &none       &kp LC(LEFT)     &none    &kp LC(RIGHT)     &none      &none
                 &trans    &trans    &trans    &trans    &trans    &none            &kp HOME    &none            &none    &none             &kp END    &none
 
@@ -708,7 +762,7 @@
         layer_nav_macos {
             label = "Navigation MacOS";
             bindings = <
-                &none     &none     &none     &none     &none     &none            &none           &none            &none    &none             &none            &kp M
+                &none     &none     &none     &none     &none     &none            &none           &dlb_m           &dl_m    &dlf_m            &none            &kp M
                 &trans    &none     &none     &none     &none     &none            &none           &kp LA(LEFT)     &none    &kp LA(RIGHT)     &none            &none
                 &trans    &trans    &trans    &trans    &trans    &none            &kp LG(LEFT)    &none            &none    &none             &kp LG(RIGHT)    &none
 
@@ -719,7 +773,7 @@
         layer_nav {
             label = "Navigation";
             bindings = <
-                &none     MO_FN LR_NAV      MO_SPC LR_NAV     MO_NAV LR_NAV     &none     &none            &none        &trans      &none       &trans       &none        &trans
+                &none     MO_FN LR_NAV      MO_SPC LR_NAV     MO_NAV LR_NAV     &none     &none            &none        &trans      &trans       &trans       &none        &trans
                 &trans    MO_HOT LR_NAV     MO_NUM LR_NAV     MO_MOU LR_NAV     &none     &none            &kp PG_UP    &trans      &kp UP      &trans       &kp PG_DN    &none
                 &trans    &trans            &trans            &trans            &trans    &none            &trans       &kp LEFT    &kp DOWN    &kp RIGHT    &trans       &none
 
