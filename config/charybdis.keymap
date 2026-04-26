@@ -194,6 +194,24 @@
 #define HMB1 &hmtk MB1
 #define HMB2 &hmtk MB2
 
+
+#define EM1 &kp K &kp O &kp N
+#define EM2 &kp K &kp V
+#define EM3 &kp S &kp T &kp A
+#define EM4 &kp M &kp A
+#define EM5 &kp N &kp T &kp I &kp N &kp DOT &kp M &kp A
+#define EM6 &kp T &kp V &kp E
+#define EM7 &kp T &kp V &kp E &kp E &kp V
+#define EM8 &kp E &kp V
+#define EM9 &kp AT &kp C &kp O &kp I
+#define EM10 &kp AT &kp G &kp M
+#define EM11 &kp N &kp S &kp P &kp A &kp I
+#define EM12 &kp A &kp I
+#define EM13 &kp D &kp DOT &kp C &kp O &kp M
+#define EM14 &kp L &kp DOT &kp C &kp O &kp M
+#define WORK_EMAIL EM1 EM3 EM5 EM7 EM9 EM11 EM13
+#define PRIVATE_EMAIL EM2 EM4 EM6 EM8 EM10 EM12 EM14
+
 &caps_word {
     continue-list = <UNDERSCORE MINUS BSPC DEL>;
 };
@@ -393,6 +411,24 @@
                 , <&macro_tap &kp KEY_LANG>
                 ;
             display-name = "Switch Language Hold Macro";
+        };
+
+        macro_work_email: macro_work_email {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings 
+                = <&macro_tap WORK_EMAIL>
+                ;
+            display-name = "Work email macro";
+        };
+
+        macro_private_email: macro_private_email {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings 
+                = <&macro_tap PRIVATE_EMAIL>
+                ;
+            display-name = "Private email macro";
         };
 
     };
@@ -705,9 +741,9 @@
         layer_hotkey_linux {
             label = "Hotkey Linux";
             bindings = <
-                &none     &none     &none     &none     &none     &none            &none    &none            &none                &none        &none        &none
-                &trans    &none     &none     &none     &none     &none            &none    &kp LC(X)        LT_SCR LC(C)         &kp LC(V)    &kp LC(S)    &none
-                &trans    &trans    &trans    &trans    &trans    &none            &none    HMR_CTR LC(Z)    HMR_CMD LC(LS(Z))    &trans       &trans       &none
+                &none     &none     &none     &none     &none     &none            &macro_private_email    &none            &none                &none        &none        &none
+                &trans    &none     &none     &none     &none     &none            &none                   &kp LC(X)        LT_SCR LC(C)         &kp LC(V)    &kp LC(S)    &none
+                &trans    &trans    &trans    &trans    &trans    &none            &none                   HMR_CTR LC(Z)    HMR_CMD LC(LS(Z))    &trans       &trans       &none
                                                                     
                                              &trans    &trans    &trans            &trans    &trans
             >;
@@ -716,9 +752,9 @@
         layer_hotkey_macos {
             label = "Hotkey MacOS";
             bindings = <
-                &none     &none     &none     &none     &none     &none            &none    &none            &none                &none                  &none               &none
-                &trans    &none     &none     &none     &none     &none            &none    &kp LG(X)        LT_SCR LG(C)         &kp LG(V)              &kp LG(S)           &none
-                &trans    &trans    &trans    &trans    &trans    &none            &none    HMR_CTR LG(Z)    HMR_CMD LG(LS(Z))    HMR_ALT LC(LEFT)       HMR_SHF LC(RIGHT)   &none
+                &none     &none     &none     &none     &none     &none            &macro_work_email    &none            &none                &none                  &none               &none
+                &trans    &none     &none     &none     &none     &none            &none                &kp LG(X)        LT_SCR LG(C)         &kp LG(V)              &kp LG(S)           &none
+                &trans    &trans    &trans    &trans    &trans    &none            &none                HMR_CTR LG(Z)    HMR_CMD LG(LS(Z))    HMR_ALT LC(LEFT)       HMR_SHF LC(RIGHT)   &none
                                                                     
                                              &trans    &trans    &trans            &trans    &trans
             >;

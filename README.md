@@ -53,8 +53,7 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [x] when trying to switch to a layer that's already active, do nothing
     - [x] add double quotes to Cyrillic
     - [x] if already on Cyrillic/Dvorak layer, pressing the same hotkey again should act as lang switch
-    - [ ] add work email to macos layer
-    - [ ] add cmd+scroll/ctrl+scroll for macos/linux
+    - [x] add work email to macos hotkey layer and private email to linux hotkey layer
     - [ ] add delete to the beginning and end of line for linux
     - [x] add macos screenshot hotkey
     - [x] add "save" hotkey
