@@ -60,7 +60,7 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [x] add != and :=
     - [x] fix numerics two rightmost columns: */ +- .:
     - [x] update cheatsheet
-    - [ ] fix emails input
+    - [x] fix emails input
 - [ ] try snipe layer
 - [ ] Try changing scroll speed
 - [ ] try automouse layer (AML)

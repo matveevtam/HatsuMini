@@ -851,9 +851,9 @@
         layer_hotkey {
             label = "Hotkey";
             bindings = <
-                &none     MO_FN LR_HOT      MO_SPC LR_HOT     MO_NAV LR_HOT     &none     &none            &none    &none     &none     &none     &none     &kp C_MUTE
-                &trans    MO_HOT LR_HOT     MO_NUM LR_HOT     MO_MOU LR_HOT     &none     &none            &none    &trans    &trans    &trans    &trans    &vb_up
-                &trans    &trans            &trans            &trans            &trans    &none            &none    &trans    &trans    &trans    &trans    &vb_dn
+                &none     MO_FN LR_HOT      MO_SPC LR_HOT     MO_NAV LR_HOT     &none     &none            &trans    &none     &none     &none     &none     &kp C_MUTE
+                &trans    MO_HOT LR_HOT     MO_NUM LR_HOT     MO_MOU LR_HOT     &none     &none            &none     &trans    &trans    &trans    &trans    &vb_up
+                &trans    &trans            &trans            &trans            &trans    &none            &none     &trans    &trans    &trans    &trans    &vb_dn
 
                                                                      &trans    &trans    &trans            &trans    &trans
             >;
