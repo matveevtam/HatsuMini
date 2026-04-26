@@ -120,6 +120,13 @@
         bindings = <&none>; \
     };
 
+#define COMBO_LAYER_LOOP_LANG_RH(LAYER) \
+    combo_ ## LAYER ## _loop_rh { \
+        key-positions = <KEY_ ## LAYER ## _RH KEY_RMOD>; \
+        layers = <LAYER>; \
+        bindings = <&kp KEY_LANG>; \
+    };
+
 #define COMBO_TO_LAYER_MACOS_RH(FROM, TO) \
     combo_to_ ## TO ## _from_ ## FROM ## _rh { \
         key-positions = <KEY_ ## TO ## _RH KEY_RMOD>; \
@@ -132,6 +139,13 @@
         key-positions = <KEY_ ## LAYER ## _RH KEY_RMOD>; \
         layers = <LAYER LAYER_MACOS>; \
         bindings = <&none>; \
+    };
+
+#define COMBO_LAYER_LOOP_MACOS_LANG_RH(LAYER) \
+    combo_ ## LAYER ## _loop_macos_rh { \
+        key-positions = <KEY_ ## LAYER ## _RH KEY_RMOD>; \
+        layers = <LAYER LAYER_MACOS>; \
+        bindings = <&kp KEY_LANG>; \
     };
 
 #define COMBO_TO_LAYER_LANG_RH(FROM, TO) \
@@ -451,7 +465,7 @@
         // left hand disabled
         // right hand
         // from LAYER_DVORAK
-        COMBO_LAYER_LOOP_MACOS_RH(LAYER_DVORAK)
+        COMBO_LAYER_LOOP_MACOS_LANG_RH(LAYER_DVORAK)
         COMBO_TO_LAYER_LANG_MACOS_RH(LAYER_DVORAK, LAYER_QWERTY)
         COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_SPEC)
         COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_NUMBER)
@@ -460,7 +474,7 @@
         COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_HOTKEY)
         COMBO_TO_LAYER_MACOS_RH(LAYER_DVORAK, LAYER_MOUSE)
         // from LAYER_QWERTY
-        COMBO_LAYER_LOOP_RH(LAYER_QWERTY)
+        COMBO_LAYER_LOOP_LANG_RH(LAYER_QWERTY)
         COMBO_TO_LAYER_LANG_RH(LAYER_QWERTY, LAYER_DVORAK)
         COMBO_TO_LAYER_LANG_RH(LAYER_QWERTY, LAYER_SPEC)
         COMBO_TO_LAYER_LANG_RH(LAYER_QWERTY, LAYER_NUMBER)

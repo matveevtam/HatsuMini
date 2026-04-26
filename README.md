@@ -52,15 +52,22 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
 - [ ] Fixes:
     - [x] when trying to switch to a layer that's already active, do nothing
     - [ ] add single and double quotes to Cyrillic
+    - [x] if already on Cyrillic/Dvorak layer, pressing the same hotkey again should act as lang switch
+    - [ ] add work email to macos layer
+    - [ ] add cmd+scroll/ctrl+scroll for macos/linux
+    - [ ] add delete to the beginning and end of line for linux
+    - [ ] add macos screenshot hotkey
+    - [ ] fix numerics two rightmost columns: */ +- .:
+    - [ ] update cheatsheet
+- [ ] try snipe layer
+- [ ] Try changing scroll speed
+- [ ] try automouse layer (AML)
 - [ ] Ideas for v2:
     - [ ] merge numbers and specials - using shift and putting extra specials in top row
     - [ ] merge mouse and navigation - put navigation to left hand or top row
     - [ ] move home row mods to middle row and put all layer switching to one bottom row
     - [ ] add sticky mods: press KEY_LMOD+mod to make it sticky, then something else to unstick it
 - [ ] Try adding auto-scroll: press to start scrolling, press again to stop - look at Key Repeat behavior
-- [ ] try snipe layer
-- [ ] Try changing scroll speed
-- [ ] try automouse layer (AML)
 
 
 ### Generating switching between layers
