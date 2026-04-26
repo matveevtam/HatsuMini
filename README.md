@@ -57,8 +57,9 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [x] add delete to the beginning and end of line for linux and macos to nav layer
     - [x] add macos screenshot hotkey
     - [x] add "save" hotkey
-    - [ ] fix numerics two rightmost columns: */ +- .:
-    - [ ] update cheatsheet
+    - [x] add != and :=
+    - [x] fix numerics two rightmost columns: */ +- .:
+    - [x] update cheatsheet
 - [ ] try snipe layer
 - [ ] Try changing scroll speed
 - [ ] try automouse layer (AML)

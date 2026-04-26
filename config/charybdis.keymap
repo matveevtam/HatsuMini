@@ -485,6 +485,24 @@
             display-name = "Delete whole line on Macos macro";
         };
 
+        ne: macro_not_equal {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings 
+                = <&macro_tap &kp EXCL &kp EQUAL>
+                ;
+            display-name = "Not-equal operator (!=) macro";
+        };
+
+        walrus: macro_walrus {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings 
+                = <&macro_tap &kp COLON &kp EQUAL>
+                ;
+            display-name = "Walrus operator (:=) macro";
+        };
+
     };
 
     /*
@@ -729,9 +747,9 @@
         layer_special {
             label = "Special";
             bindings = <
-                &none     MO_FN LR_SPC      MO_SPC LR_SPC     MO_NAV LR_SPC     &none     &none            &none    &kp AMPS        &kp ASTRK       &kp EQUAL        &kp LS(MINUS)        &kp BACKSLASH
-                &trans    MO_HOT LR_SPC     MO_NUM LR_SPC     MO_MOU LR_SPC     &none     &none            &none    HMB1 DLLR       LT_SCR PRCNT    HMB2 CARET       &kp LS(EQUAL)        &kp MINUS
-                &trans    &trans            &trans            &trans            &trans    &none            &none    HMR_CTR EXCL    HMR_CMD AT      HMR_ALT HASH     HMR_SHF LS(SLASH)    &kp SLASH
+                &none     MO_FN LR_SPC      MO_SPC LR_SPC     MO_NAV LR_SPC     &none     &none            &none      &kp AMPS        &kp ASTRK       &kp EQUAL        &kp LS(MINUS)        &kp BACKSLASH
+                &trans    MO_HOT LR_SPC     MO_NUM LR_SPC     MO_MOU LR_SPC     &none     &none            &walrus    HMB1 DLLR       LT_SCR PRCNT    HMB2 CARET       &kp LS(EQUAL)        &kp MINUS
+                &trans    &trans            &trans            &trans            &trans    &none            &ne        HMR_CTR EXCL    HMR_CMD AT      HMR_ALT HASH     HMR_SHF LS(SLASH)    &kp SLASH
 
                                                                      &trans    &trans    &trans            &trans    &trans
             >;
@@ -740,9 +758,9 @@
         layer_number {
             label = "Number";
             bindings = <
-                &none     MO_FN LR_NUM      MO_SPC LR_NUM     MO_NAV LR_NUM     &none     &none            &kp MINUS    &kp N7        &kp N8        &kp N9        &kp SLASH      &kp CARET
-                &trans    MO_HOT LR_NUM     MO_NUM LR_NUM     MO_MOU LR_NUM     &none     &none            &kp PLUS     HMB1 N4       LT_SCR N5     HMB2 N6       &kp ASTRK      &kp EQUAL
-                &trans    &trans            &trans            &trans            &trans    &none            &kp N0       HMR_CTR N1    HMR_CMD N2    HMR_ALT N3    HMR_SHF DOT    &kp COLON
+                &none     MO_FN LR_NUM      MO_SPC LR_NUM     MO_NAV LR_NUM     &none     &none            &kp CARET    &kp N7        &kp N8        &kp N9        &kp DOT          &kp COLON
+                &trans    MO_HOT LR_NUM     MO_NUM LR_NUM     MO_MOU LR_NUM     &none     &none            &kp EQUAL    HMB1 N4       LT_SCR N5     HMB2 N6       &kp LS(EQUAL)    &kp MINUS
+                &trans    &trans            &trans            &trans            &trans    &none            &kp N0       HMR_CTR N1    HMR_CMD N2    HMR_ALT N3    HMR_SHF ASTRK    &kp SLASH
 
                                                                      &trans    &trans    &trans            &trans      &trans
             >;
