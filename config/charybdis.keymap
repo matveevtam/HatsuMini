@@ -71,6 +71,18 @@
     LAYER_SNIPE \
     LAYER_SCROLL
 
+#define ALL_LAYERS_NO_MACOS \
+    LAYER_DVORAK \
+    LAYER_QWERTY \
+    LAYER_SPEC \
+    LAYER_NUMBER \
+    LAYER_NAV \
+    LAYER_FN \
+    LAYER_HOTKEY \
+    LAYER_MOUSE \
+    LAYER_SNIPE \
+    LAYER_SCROLL
+
 #define LR_DVO LAYER_DVORAK
 #define LR_QWE LAYER_QWERTY
 #define LR_SPC LAYER_SPEC
@@ -403,7 +415,13 @@
         };
         combo_printscreen {
             key-positions = <0 12>;
+            layers = <ALL_LAYERS_NO_MACOS>;
             bindings = <&kp PRINTSCREEN>;
+        };
+        combo_printscreen_macos {
+            key-positions = <0 12>;
+            layers = <LAYER_MACOS>;
+            bindings = <&kp LS(LCMD(N4))>;
         };
         combo_ralt {
             key-positions = <12 24>;

@@ -56,7 +56,8 @@ See https://github.com/inorichi/zmk-pmw3610-driver:
     - [ ] add work email to macos layer
     - [ ] add cmd+scroll/ctrl+scroll for macos/linux
     - [ ] add delete to the beginning and end of line for linux
-    - [ ] add macos screenshot hotkey
+    - [x] add macos screenshot hotkey
+    - [ ] add "save" hotkey
     - [ ] fix numerics two rightmost columns: */ +- .:
     - [ ] update cheatsheet
 - [ ] try snipe layer
