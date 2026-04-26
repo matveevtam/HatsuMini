@@ -560,6 +560,11 @@
             layers = <LAYER_QWERTY>;
             bindings = <&kp RIGHT_BRACKET>;
         };
+        combo_cyrillic_double_quote {
+            key-positions = <21 22>;
+            layers = <LAYER_QWERTY>;
+            bindings = <&kp LS(N2)>;
+        };
     // ======== Cyrillic missing characters and specials ========
 
     // ======== Toggle MacOS Layer and resetting active layers ========
