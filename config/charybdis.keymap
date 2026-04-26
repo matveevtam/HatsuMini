@@ -209,8 +209,24 @@
 #define EM12 &kp A &kp I
 #define EM13 &kp D &kp DOT &kp C &kp O &kp M
 #define EM14 &kp L &kp DOT &kp C &kp O &kp M
-#define WORK_EMAIL EM1 EM3 EM5 EM7 EM9 EM11 EM13
-#define PRIVATE_EMAIL EM2 EM4 EM6 EM8 EM10 EM12 EM14
+
+#define WORK_EMAIL \
+    <&macro_tap EM1>, \
+    <&macro_tap EM3>, \
+    <&macro_tap EM5>, \
+    <&macro_tap EM7>, \
+    <&macro_tap EM9>, \
+    <&macro_tap EM11>, \
+    <&macro_tap EM13>
+
+#define PRIVATE_EMAIL \
+    <&macro_tap EM2>, \
+    <&macro_tap EM4>, \
+    <&macro_tap EM6>, \
+    <&macro_tap EM8>, \
+    <&macro_tap EM10>, \
+    <&macro_tap EM12>, \
+    <&macro_tap EM14>
 
 &caps_word {
     continue-list = <UNDERSCORE MINUS BSPC DEL>;
@@ -417,7 +433,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings 
-                = <&macro_tap WORK_EMAIL>
+                = WORK_EMAIL
                 ;
             display-name = "Work email macro";
         };
@@ -426,7 +442,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings 
-                = <&macro_tap PRIVATE_EMAIL>
+                = PRIVATE_EMAIL
                 ;
             display-name = "Private email macro";
         };
